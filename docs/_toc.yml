@@ -1,0 +1,33 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: 'Intorduction'
+    chapters:
+    - file: ch1_intro/tutorial_structure
+    - file: ch1_intro/tutorial_scope
+
+  - caption: 'Setting up a deep learning project'
+    chapters:
+    - file: ch2_wandb/wandb
+    - file: ch2_wandb/collab
+
+  - caption: 'Beat tracking with few data'
+    chapters:
+    - file: ch3_beat_tracking/beat_tracking_with_few_data
+
+  - caption: 'Source separation with few data and artificial mixtures'
+    chapters:
+    - file: ch4_source_separation/source_separation_with_few_data
+
+  - caption: 'Discussion and conclusions'
+    chapters:
+    - file: ch5_discussion/open_challenges
+
+  - caption: 'Resources'
+    chapters:
+    - file: ch6_resources/references
+    - file: ch6_resources/acknowledgments
+    - file: ch6_resources/authors

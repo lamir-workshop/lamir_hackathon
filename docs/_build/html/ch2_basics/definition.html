@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Definition by sound example &#8212; My sample book</title>
+
+
+
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only {
+        display: none !important;
+      }
+    </style>
+  </noscript>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+  <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+  <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  <link rel="stylesheet" type="text/css"
+    href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+  <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+  <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+  <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+  <script src="../_static/doctools.js?v=9a2dae69"></script>
+  <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+  <script src="../_static/copybutton.js?v=f281be69"></script>
+  <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+  <script>let toggleHintShow = 'Click to show';</script>
+  <script>let toggleHintHide = 'Click to hide';</script>
+  <script>let toggleOpenOnPrint = 'true';</script>
+  <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+  <script src="../_static/design-tabs.js?v=f930bc37"></script>
+  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+  <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+  <script>DOCUMENTATION_OPTIONS.pagename = 'ch2_basics/definition';</script>
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en" />
+  <meta name="docsearch:version" content="" />
+</head>
+
+
+<body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%"
+  data-default-mode="">
+
+
+
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  <div id="pst-scroll-pixel-helper"></div>
+
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+
+  <dialog id="pst-search-dialog">
+
+    <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" class="form-control" name="q" placeholder="Search this book..."
+        aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+      <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+    </form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+    <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  </div>
+
+
+  <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+  </header>
+
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+
+
+
+
+
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+
+
+
+        <div class="sidebar-header-items sidebar-primary__section">
+
+
+
+
+        </div>
+
+        <div class="sidebar-primary-items__start sidebar-primary__section">
+          <div class="sidebar-primary-item">
+
+
+
+
+
+            <a class="navbar-brand logo" href="../intro.html">
+
+
+
+
+
+
+
+
+
+
+              <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home" />
+              <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home" />
+
+
+            </a>
+          </div>
+          <div class="sidebar-primary-item">
+
+            <button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search"
+              data-bs-placement="bottom" data-bs-toggle="tooltip">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="search-button__default-text">Search</span>
+              <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd
+                  class="kbd-shortcut__modifier">K</kbd></span>
+            </button>
+          </div>
+          <div class="sidebar-primary-item">
+            <nav class="bd-links bd-docs-nav" aria-label="Main">
+              <div class="bd-toc-item navbar-nav active">
+
+                <ul class="nav bd-sidenav bd-sidenav__home-link">
+                  <li class="toctree-l1">
+                    <a class="reference internal" href="../intro.html">
+                      LAMIR Hackathon 2024
+                    </a>
+                  </li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intorduction</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch1_intro/tutorial_structure.html">Tutorial structure and setup</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ch1_intro/tutorial_scope.html">Tutorial
+                      scope and prerequisites</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Setting up a deep learning
+                    project</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal" href="wandb.html">Weights and Biases</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Beat tracking with few
+                    data</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch3_going_deep/beat_tracking_with_few_data.html">Design decisions for tempo, beat, and
+                      downbeat</a></li>
+
+
+
+
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Source separation with few
+                    data and artificial mixtures</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch4_going_deeper/source_separation_with_few_data.html">Hands on!</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discussion and
+                    conclusions</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch5_discussion/open_challenges.html">Concluding remarks</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch6_resources/references.html">References</a></li>
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch6_resources/acknowledgments.html">Acknowledgments</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ch6_resources/authors.html">About the
+                      Authors</a></li>
+                </ul>
+
+              </div>
+            </nav>
+          </div>
+        </div>
+
+
+        <div class="sidebar-primary-items__end sidebar-primary__section">
+        </div>
+
+        <div id="rtd-footer-container"></div>
+
+
+      </div>
+
+      <main id="main-content" class="bd-main" role="main">
+
+
+
+        <div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+
+            <div class="bd-header-article d-print-none">
+              <div class="header-article-items header-article__inner">
+
+                <div class="header-article-items__start">
+
+                  <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm"
+                      title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+                      <span class="fa-solid fa-bars"></span>
+                    </button></div>
+
+                </div>
+
+
+                <div class="header-article-items__end">
+
+                  <div class="header-article-item">
+
+                    <div class="article-header-buttons">
+
+
+
+
+
+                      <div class="dropdown dropdown-source-buttons">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" aria-label="Source repositories">
+                          <i class="fab fa-github"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+
+
+
+                          <li><a href="https://github.com/xavijuanola/lamirtest" target="_blank"
+                              class="btn btn-sm btn-source-repository-button dropdown-item" title="Source repository"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fab fa-github"></i>
+                              </span>
+                              <span class="btn__text-container">Repository</span>
+                            </a>
+                          </li>
+
+
+
+
+                          <li><a
+                              href="https://github.com/xavijuanola/lamirtest/issues/new?title=Issue%20on%20page%20%2Fch2_basics/definition.html&body=Your%20issue%20content%20here."
+                              target="_blank" class="btn btn-sm btn-source-issues-button dropdown-item"
+                              title="Open an issue" data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-lightbulb"></i>
+                              </span>
+                              <span class="btn__text-container">Open issue</span>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+
+
+
+
+
+
+                      <div class="dropdown dropdown-download-buttons">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" aria-label="Download this page">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+
+
+
+                          <li><a href="../_sources/ch2_basics/definition.ipynb" target="_blank"
+                              class="btn btn-sm btn-download-source-button dropdown-item" title="Download source file"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-file"></i>
+                              </span>
+                              <span class="btn__text-container">.ipynb</span>
+                            </a>
+                          </li>
+
+
+
+
+                          <li>
+                            <button onclick="window.print()" class="btn btn-sm btn-download-pdf-button dropdown-item"
+                              title="Print to PDF" data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-file-pdf"></i>
+                              </span>
+                              <span class="btn__text-container">.pdf</span>
+                            </button>
+                          </li>
+
+                        </ul>
+                      </div>
+
+
+
+
+                      <button onclick="toggleFullScreen()" class="btn btn-sm btn-fullscreen-button"
+                        title="Fullscreen mode" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+
+                        <span class="btn__icon-container">
+                          <i class="fas fa-expand"></i>
+                        </span>
+
+                      </button>
+
+
+
+                      <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only"
+                        aria-label="Color mode" data-bs-title="Color mode" data-bs-placement="bottom"
+                        data-bs-toggle="tooltip">
+                        <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light"
+                          title="Light"></i>
+                        <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark" title="Dark"></i>
+                        <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"
+                          title="System Settings"></i>
+                      </button>
+
+
+                      <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only"
+                        title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+                        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                      </button>
+                      <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar"
+                        data-bs-placement="bottom" data-bs-toggle="tooltip">
+                        <span class="fa-solid fa-list"></span>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div id="jb-print-docs-body" class="onlyprint">
+              <h1>Definition by sound example</h1>
+              <!-- Table of contents -->
+              <div id="print-main-content">
+                <div id="jb-print-toc">
+
+                  <div>
+                    <h2> Contents </h2>
+                  </div>
+                  <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#a-straightforward-example">A straightforward example</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#an-expressive-example">An expressive example</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#a-nonwestern-example">A nonwestern example</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#summary">Summary</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="searchbox"></div>
+            <article class="bd-article">
+
+              <section class="tex2jax_ignore mathjax_ignore" id="definition-by-sound-example">
+                <h1>Definition by sound example<a class="headerlink" href="#definition-by-sound-example"
+                    title="Link to this heading">#</a></h1>
+                <p>The goal of this section is to orient everyone towards the general concepts
+                  involved in the estimation of tempo, beat, and downbeats from musical
+                  audio signals.</p>
+                <p>While this could be acheived through an extensive literature review
+                  supported by the diverse multi-disciplinary perspectives
+                  including music theory, psychology, and cognitive neuroscience,
+                  we instead try to provide a quick and intuitive means to grasp the relevant
+                  concepts via a set of three annotated sound examples.
+                  Where appropriate we draw upon the relevant different multi-disciplinary
+                  perspectives, as a means to demonstrate the interestingness
+                  of the tasks and the potential challenges when
+                  addressing them in a computational manner.</p>
+                <section id="a-straightforward-example">
+                  <h2>A straightforward example<a class="headerlink" href="#a-straightforward-example"
+                      title="Link to this heading">#</a></h2>
+                  <p>Let’s start with a relatively easy example which should help
+                    clarify what the intuitive target is for a system that
+                    can estimate the metrical structure of a piece of
+                    music. For this example we can plot the waveform and listen to the audio excerpt.</p>
+                  <div class="admonition-task admonition">
+                    <p class="admonition-title">Task</p>
+                    <p>Why not go ahead
+                      and try to tap the beat yourself?
+                      You can also try to count along as well.</p>
+                  </div>
+                  <div class="cell docutils container">
+                    <div class="cell_input docutils container">
+                      <div class="highlight-ipython3 notranslate">
+                        <div class="highlight">
+                          <pre><span></span><span class="c1"># Do import and setup </span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">librosa</span>
+<span class="kn">import</span> <span class="nn">librosa.display</span>
+<span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">ipd</span>
+
+<span class="n">SR</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="n">FIGSIZE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cell_output docutils container">
+                      <div class="output traceback highlight-ipythontb notranslate">
+                        <div class="highlight">
+                          <pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell docutils container">
+                    <div class="cell_input docutils container">
+                      <div class="highlight-ipython3 notranslate">
+                        <div class="highlight">
+                          <pre><span></span><span class="n">x1</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../assets/ch2_basics/audio/easy_example.flac&#39;</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">SR</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">FIGSIZE</span><span class="p">)</span>
+<span class="n">librosa</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">waveplot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">);</span> <span class="c1"># this semi-colon surpresses the matplotlib stdout &lt;matplotlib.zzz.zzz at 0x etc.&gt;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Easy Example: audio waveform&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="n">sr</span><span class="p">);</span>
+<span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">SR</span><span class="p">)</span> 
+</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dropdown admonition">
+                    <p class="admonition-title">Wait! What is that amazing song?</p>
+                    <p><a class="reference external"
+                        href="https://www.discogs.com/release/8509227-Yuko-Tomita-Shampoo">“Shampoo” from the album
+                        “Shampoo” by Yuko Tomita</a></p>
+                    <p>At the time of writing, you can listen to the full version on <a class="reference external"
+                        href="https://www.youtube.com/watch?v=yJImRetSSu4">YouTube</a></p>
+                    <p><img alt="" src="assets/ch2_basics/figs/shampoo.jpg" /></p>
+                  </div>
+                  <p>What we’re trying to work towards in this tutorial
+                    is to design and execute a deep learning based
+                    system that can “listen” to pieces of music like this
+                    and then not only tap along to mark the beat,
+                    but also count in time to music.</p>
+                  <p>Essentially this means that it can discover
+                    a quasi-periodic sequence of time-points
+                    which convey the most comfortable rate at which
+                    to tap along to the piece, and their
+                    metrical organisation, i.e., the grouping of
+                    beats into bars. The tempo can then be
+                    understood as the number of beats per minute,
+                    which is to say an indication as to whether
+                    the music is fast, meaning it has many
+                    beats per minute and hence a high tempo,
+                    or alternatively if the piece is slow
+                    and has a lower number of beats per minute.</p>
+                  <p>Now let’s look at the waveform again with the beats
+                    and downbeats drawn on top,
+                    and also listen to them rendered as short pulses.
+                    The higher pitched pulses
+                    correspond to the downbeat or the “1” of
+                    every bar, and the lower pitched pulses
+                    correspond to the remaining beats in each bar.</p>
+                  <div class="cell docutils container">
+                    <div class="cell_input docutils container">
+                      <div class="highlight-ipython3 notranslate">
+                        <div class="highlight">
+                          <pre><span></span><span class="n">beats1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../assets/ch2_basics/audio/easy_example.beats&#39;</span><span class="p">)</span>
+<span class="n">downbeats1</span> <span class="o">=</span> <span class="n">beats1</span><span class="p">[</span><span class="n">beats1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">beats1</span> <span class="o">=</span> <span class="n">beats1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">y_beats1</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">clicks</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">beats1</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">click_freq</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">click_duration</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">click</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span>
+<span class="n">y_downbeats1</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">clicks</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">downbeats1</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">click_freq</span><span class="o">=</span><span class="mf">1500.0</span><span class="p">,</span> <span class="n">click_duration</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">click</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">FIGSIZE</span><span class="p">)</span>
+<span class="n">librosa</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">waveshow</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">beats1</span><span class="p">,</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x1</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Beats&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">downbeats1</span><span class="p">,</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x1</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Downbeats&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Easy example: audio waveform with beats and downbeats&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="n">sr</span><span class="p">);</span>
+
+<span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="mf">0.6</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mf">0.25</span><span class="o">*</span><span class="n">y_beats1</span><span class="o">+</span><span class="mf">0.25</span><span class="o">*</span><span class="n">y_downbeats1</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">SR</span><span class="p">)</span> 
+</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p>Our intent is for this example to be relatively unambiguous in terms
+                    of the placement of the beats, and thus the “preferred” metrical level at which to tap.
+                    The beats are evenly spaced at a tempo of
+                    100 beats per minute (bpm) and with a constant 4/4 metre. The clear
+                    presence of drums with a repeating pattern of a kick drum events
+                    on the ‘1’ and ‘3’ and snare drum events on the ‘2’ and ‘4’
+                    makes for a pretty straightforward excerpt both for human
+                    tappers and likewise for a computational system.
+                    In addition there are chord changes which also assist
+                    in understanding the harmonic rhythm of the piece.</p>
+                  <p>Having said that, outside of trivial cases (e.g., an isolated metronome), there
+                    is almost never likely to be complete agreement among tappers
+                    of the metrical level. Some people may prefer to tap at a slower
+                    rate (e.g., at half the tempo), while others may tap twice as fast.
+                    Alternatively some tappers might tap the so-called “off-beat”
+                    corresponding to the same tempo, but tapping in the mid-way point
+                    between each beat, i.e., shifted by one 1/8th note.</p>
+                </section>
+                <section id="an-expressive-example">
+                  <h2>An expressive example<a class="headerlink" href="#an-expressive-example"
+                      title="Link to this heading">#</a></h2>
+                  <p>Having looked at an easy example, let’s transition
+                    to a more complicated case. As before, we’ll begin
+                    by looking at the waveform and listening the audio excerpt.
+                    The piece in question is the Heitor Villa-Lobos composition Choros №1 as performed by <a
+                      class="reference external" href="https://www.youtube.com/watch?v=Uj_OferFIMk">Kyuhee Park</a></p>
+                  <p>Once again you can have a go tapping and counting along with the piece.</p>
+                  <div class="admonition note">
+                    <p class="admonition-title">Note</p>
+                    <p>Since the code examples are more or less identical for the remaining sound examples
+                      they’re hidden by default, but clicking the plus symbol on the right hand side
+                      next to where it says “Click to show” will reveal them.</p>
+                  </div>
+                  <div class="cell tag_hide-input docutils container">
+                    <details class="hide above-input">
+                      <summary aria-label="Toggle hidden content">
+                        <span class="collapsed">Show code cell source</span>
+                        <span class="expanded">Hide code cell source</span>
+                      </summary>
+                      <div class="cell_input docutils container">
+                        <div class="highlight-ipython3 notranslate">
+                          <div class="highlight">
+                            <pre><span></span><span class="n">x2</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../assets/ch2_basics/audio/expressive_example.flac&#39;</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">SR</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">FIGSIZE</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Expressive Example: audio waveform&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="n">sr</span><span class="p">);</span>
+<span class="n">librosa</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">waveshow</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">);</span> 
+
+<span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">SR</span><span class="p">)</span> 
+</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                  <p><strong>What’s different?</strong></p>
+                  <ul class="simple">
+                    <li>
+                      <p>There are no drums, just a guitarist playing alone</p>
+                      <ul>
+                        <li>
+                          <p>So no need to synchronise with anyone else</p>
+                        </li>
+                        <li>
+                          <p>In this sense there is no need for a “shared sense” of the beat</p>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <p>The tempo is <strong>not</strong> constant, and there are some big pauses to deal with!</p>
+                      <ul>
+                        <li>
+                          <p>This makes it harder to predict the next beat - especially on the first listen</p>
+                        </li>
+                        <li>
+                          <p>Computationally, this also means that the tempo must be tracked through time as opposed to
+                            a single, global estimate</p>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p><strong>What’s the same?</strong></p>
+                  <ul class="simple">
+                    <li>
+                      <p>While the musical content is completely different, the goal is unchanged:</p>
+                      <ul>
+                        <li>
+                          <p>Try to tap your foot in time with the beat and count the metrical positions</p>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <p>Thus, at a high level, the formulation of problem from a computational perspective is the same:
+                      </p>
+                      <ul>
+                        <li>
+                          <p>audio-in, beats+dowbeats-out</p>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>Let’s take a listen again, but this time with the beat and downbeat markers
+                    rendered as short pulses:</p>
+                  <div class="cell tag_hide-input docutils container">
+                    <details class="hide above-input">
+                      <summary aria-label="Toggle hidden content">
+                        <span class="collapsed">Show code cell source</span>
+                        <span class="expanded">Hide code cell source</span>
+                      </summary>
+                      <div class="cell_input docutils container">
+                        <div class="highlight-ipython3 notranslate">
+                          <div class="highlight">
+                            <pre><span></span><span class="n">beats2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../assets/ch2_basics/audio/expressive_example.beats&#39;</span><span class="p">)</span>
+<span class="n">downbeats2</span> <span class="o">=</span> <span class="n">beats2</span><span class="p">[</span><span class="n">beats2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">beats2</span> <span class="o">=</span> <span class="n">beats2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">y_beats2</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">clicks</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">beats2</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">click_freq</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">click_duration</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">click</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x2</span><span class="p">))</span>
+<span class="n">y_downbeats2</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">clicks</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">downbeats2</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">click_freq</span><span class="o">=</span><span class="mf">1500.0</span><span class="p">,</span> <span class="n">click_duration</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">click</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">FIGSIZE</span><span class="p">)</span>
+<span class="n">librosa</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">waveshow</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">beats2</span><span class="p">,</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x2</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x2</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Beats&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">downbeats2</span><span class="p">,</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x2</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x2</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Downbeats&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Expressive Example: audio waveform with beats and downbeats&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="n">sr</span><span class="p">);</span>
+
+<span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="mf">0.6</span><span class="o">*</span><span class="n">x2</span><span class="o">+</span><span class="mf">0.25</span><span class="o">*</span><span class="n">y_beats2</span><span class="o">+</span><span class="mf">0.25</span><span class="o">*</span><span class="n">y_downbeats2</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">SR</span><span class="p">)</span> 
+</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                  <ul class="simple">
+                    <li>
+                      <p>Do you agree with the annotations?</p>
+                    </li>
+                    <li>
+                      <p>Did you prefer to tap at a faster or slower rate?</p>
+                    </li>
+                    <li>
+                      <p>Maybe you kept this tempo, but counted the beats in groups of four rather than two?</p>
+                    </li>
+                    <li>
+                      <p>Maybe you felt the timing of the taps was a little off? Especially on the first beat!</p>
+                    </li>
+                    <li>
+                      <p>Wait, why are there no beats in the first 5 seconds of the piece?</p>
+                    </li>
+                  </ul>
+                  <p>In order to try to address these points we need to consider how this annotation
+                    was made. We’ll see more about “how to annotate” in the next section, but for now
+                    we can make some headway in addressing these points by looking at a score representation
+                    for the very beginning of the piece.</p>
+                  <figure class="align-center" id="choro">
+                    <a class="reference internal image-reference" href="assets/ch2_basics/figs/choro_score.png"><img
+                        alt="Score representation of expressive excerpt" src="assets/ch2_basics/figs/choro_score.png"
+                        style="width: 450px;" /></a>
+                    <figcaption>
+                      <p><span class="caption-text">Score representation of expressive excerpt. Image taken from <span
+                            id="id1">[<a class="reference internal" href="../ch6_resources/references.html#id7"
+                              title="António S Pinto, Sebastian Böck, Jaime S Cardoso, and Matthew EP Davies. User-driven fine-tuning for beat tracking. Electronics, 10(13):1518, 2021.">PBockCD21</a>]</span></span><a
+                          class="headerlink" href="#choro" title="Link to this image">#</a></p>
+                    </figcaption>
+                  </figure>
+                  <p>Without wishing to get too technical in musical terms,
+                    the score shows that the first three notes of the piece,
+                    corresponding to its main <em>motif</em>,
+                    form an <em>anacrusis</em> - meaning a “lead-in” to the first
+                    complete bar, and are notated to be played in a very expressive manner
+                    at the discretion of the performer.
+                    While these three notes take up almost the first
+                    5 seconds of the piece, from a music notation perspective
+                    they are all 1/16th notes, and thus all fall <strong>within</strong> a single notated beat (i.e.,
+                    one 1/4 note).
+                    On this basis, if we are to rely on the score, then
+                    none of the notes should be tapped at the start, nor
+                    when the motif repeats around the 30s mark.</p>
+                  <p>The score also tells us the time-signature of the piece is 2/4 and thus
+                    we should count the beats in groups of 2 rather than 4.
+                    This also lets us know which notes correspond to the beat-level
+                    and thus the rate at which we should tap (again, if we want to stick to the score).</p>
+                  <p>Finally, concerning the beginning of the first complete bar,
+                    i.e., the point at which the first overlaid pulse can be heard,
+                    this corresponds to an arpeggiated chord, where the plucking
+                    of the strings is not simultaneous, but drawn out so the
+                    individual notes of the chord can be heard.
+                    Again, notationally these notes correspond to a single
+                    beat, but this elongation of the chord makes it difficult to precisely
+                    identify a single time instant to mark as the beat.</p>
+                  <p>In summary, if we rely on the score then this can
+                    help guide how the annotation should be performed.
+                    On the other hand, tapping purely based on listener
+                    perception, especially without prior familiarity
+                    with the peice, could lead to different annotations.</p>
+                </section>
+                <section id="a-nonwestern-example">
+                  <h2>A nonwestern example<a class="headerlink" href="#a-nonwestern-example"
+                      title="Link to this heading">#</a></h2>
+                  <p>In our final example let’s move away from “western” music and consider
+                    an excerpt of Uruguayan Candombe (taken from the <a class="reference external"
+                      href="http://www.eumus.edu.uy/candombe/datasets/ISMIR2015/">Candombe Recordings Dataset</a>. As
+                    before, please also have a go
+                    tapping and counting along!</p>
+                  <div class="cell tag_hide-input docutils container">
+                    <details class="hide above-input">
+                      <summary aria-label="Toggle hidden content">
+                        <span class="collapsed">Show code cell source</span>
+                        <span class="expanded">Hide code cell source</span>
+                      </summary>
+                      <div class="cell_input docutils container">
+                        <div class="highlight-ipython3 notranslate">
+                          <div class="highlight">
+                            <pre><span></span><span class="n">x3</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../assets/ch2_basics/audio/nonwestern_example.flac&#39;</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">SR</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">FIGSIZE</span><span class="p">)</span>
+<span class="n">librosa</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">waveshow</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nonwestern Example: audio waveform&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="n">sr</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">SR</span><span class="p">)</span> 
+</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                  <p>Let’s now listen to the expert annotations.</p>
+                  <div class="cell tag_hide-input docutils container">
+                    <details class="hide above-input">
+                      <summary aria-label="Toggle hidden content">
+                        <span class="collapsed">Show code cell source</span>
+                        <span class="expanded">Hide code cell source</span>
+                      </summary>
+                      <div class="cell_input docutils container">
+                        <div class="highlight-ipython3 notranslate">
+                          <div class="highlight">
+                            <pre><span></span><span class="n">beats3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../assets/ch2_basics/audio/nonwestern_example.beats&#39;</span><span class="p">)</span>
+<span class="n">downbeats3</span> <span class="o">=</span> <span class="n">beats3</span><span class="p">[</span><span class="n">beats3</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">beats3</span> <span class="o">=</span> <span class="n">beats3</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">y_beats3</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">clicks</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">beats3</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">click_freq</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">click_duration</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">click</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x3</span><span class="p">))</span>
+<span class="n">y_downbeats3</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">clicks</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">downbeats3</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">click_freq</span><span class="o">=</span><span class="mf">1500.0</span><span class="p">,</span> <span class="n">click_duration</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">click</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">FIGSIZE</span><span class="p">)</span>
+<span class="n">librosa</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">waveshow</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">SR</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">beats3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Beats&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">downbeats3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Downbeats&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nonwestern Example: audio waveform with beats and downbeats&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="n">sr</span><span class="p">);</span>
+<span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="mf">0.6</span><span class="o">*</span><span class="n">x3</span><span class="o">+</span><span class="mf">0.25</span><span class="o">*</span><span class="n">y_beats3</span><span class="o">+</span><span class="mf">0.25</span><span class="o">*</span><span class="n">y_downbeats3</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">SR</span><span class="p">)</span> 
+</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                  <p>The specific challenge here lies not only in the rhythmic density
+                    of the performance, but in understanding the metrical organisation.
+                    For those familiar with Candombe this is a straightforward
+                    excerise and as such it can be tapped and counted in an unambiguous
+                    way, but to the untrained ear (or algorithm!) it can be much more
+                    challenging to understanding how to tap along.</p>
+                  <p>As we proceed through the remainder of this part of the tutorial
+                    we’ll revisit these examples again when we look at a baseline
+                    approach and also explore the means by which algorithms
+                    can be evaluated.</p>
+                </section>
+                <section id="summary">
+                  <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+                  <p>In this section we’ve looked at three different sound examples
+                    as a means to intuitively understand the nature, interestingness,
+                    and challenges of the tasks of tempo, beat, and downbeat estimation.</p>
+                  <p>While we’ve touched upon it here,
+                    we’ll now move on to considering the process of annotation in more detail.</p>
+                </section>
+              </section>
+
+              <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch2_basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+              <script>kernelName = 'python3'</script>
+
+            </article>
+
+
+
+
+
+
+            <footer class="prev-next-footer d-print-none">
+
+              <div class="prev-next-area">
+              </div>
+            </footer>
+
+          </div>
+
+
+
+          <dialog id="pst-secondary-sidebar-modal"></dialog>
+          <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc">
+            <div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+              <div class="sidebar-secondary-item">
+                <div class="page-toc tocsection onthispage">
+                  <i class="fa-solid fa-list"></i> Contents
+                </div>
+                <nav class="bd-toc-nav page-toc">
+                  <ul class="visible nav section-nav flex-column">
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#a-straightforward-example">A straightforward example</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#an-expressive-example">An expressive example</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#a-nonwestern-example">A nonwestern example</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#summary">Summary</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+        <footer class="bd-footer-content">
+
+          <div class="bd-footer-content__inner container">
+
+            <div class="footer-item">
+
+              <p class="component-author">
+                By Matthew E. P. Davies, Sebastian Bock, Magdalena Fuentes
+              </p>
+
+            </div>
+
+            <div class="footer-item">
+
+
+              <p class="copyright">
+
+                © Copyright 2024.
+                <br />
+
+              </p>
+
+            </div>
+
+            <div class="footer-item">
+
+            </div>
+
+            <div class="footer-item">
+
+            </div>
+
+          </div>
+        </footer>
+
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+</body>
+
+</html>

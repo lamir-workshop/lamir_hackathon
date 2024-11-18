@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>On different DNN architectures &#8212; My sample book</title>
+
+
+
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only {
+        display: none !important;
+      }
+    </style>
+  </noscript>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+  <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+  <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  <link rel="stylesheet" type="text/css"
+    href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+  <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+  <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+  <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+  <script src="../_static/doctools.js?v=9a2dae69"></script>
+  <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+  <script src="../_static/copybutton.js?v=f281be69"></script>
+  <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+  <script>let toggleHintShow = 'Click to show';</script>
+  <script>let toggleHintHide = 'Click to hide';</script>
+  <script>let toggleOpenOnPrint = 'true';</script>
+  <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+  <script src="../_static/design-tabs.js?v=f930bc37"></script>
+  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+  <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+  <script>window.MathJax = { "options": { "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area" } }</script>
+  <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>DOCUMENTATION_OPTIONS.pagename = 'ch3_going_deep/dnns';</script>
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en" />
+  <meta name="docsearch:version" content="" />
+</head>
+
+
+<body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%"
+  data-default-mode="">
+
+
+
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  <div id="pst-scroll-pixel-helper"></div>
+
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+
+  <dialog id="pst-search-dialog">
+
+    <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" class="form-control" name="q" placeholder="Search this book..."
+        aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+      <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+    </form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+    <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  </div>
+
+
+  <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+  </header>
+
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+
+
+
+
+
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+
+
+
+        <div class="sidebar-header-items sidebar-primary__section">
+
+
+
+
+        </div>
+
+        <div class="sidebar-primary-items__start sidebar-primary__section">
+          <div class="sidebar-primary-item">
+
+
+
+
+
+            <a class="navbar-brand logo" href="../intro.html">
+
+
+
+
+
+
+
+
+
+
+              <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home" />
+              <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home" />
+
+
+            </a>
+          </div>
+          <div class="sidebar-primary-item">
+
+            <button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search"
+              data-bs-placement="bottom" data-bs-toggle="tooltip">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="search-button__default-text">Search</span>
+              <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd
+                  class="kbd-shortcut__modifier">K</kbd></span>
+            </button>
+          </div>
+          <div class="sidebar-primary-item">
+            <nav class="bd-links bd-docs-nav" aria-label="Main">
+              <div class="bd-toc-item navbar-nav active">
+
+                <ul class="nav bd-sidenav bd-sidenav__home-link">
+                  <li class="toctree-l1">
+                    <a class="reference internal" href="../intro.html">
+                      LAMIR Hackathon 2024
+                    </a>
+                  </li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intorduction</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch1_intro/tutorial_structure.html">Tutorial structure and setup</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ch1_intro/tutorial_scope.html">Tutorial
+                      scope and prerequisites</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Setting up a deep learning
+                    project</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal" href="../ch2_basics/wandb.html">Weights and
+                      Biases</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Beat tracking with few
+                    data</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal" href="beat_tracking_with_few_data.html">Design
+                      decisions for tempo, beat, and downbeat</a></li>
+
+
+
+
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Source separation with few
+                    data and artificial mixtures</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch4_going_deeper/source_separation_with_few_data.html">Hands on!</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discussion and
+                    conclusions</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch5_discussion/open_challenges.html">Concluding remarks</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch6_resources/references.html">References</a></li>
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch6_resources/acknowledgments.html">Acknowledgments</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ch6_resources/authors.html">About the
+                      Authors</a></li>
+                </ul>
+
+              </div>
+            </nav>
+          </div>
+        </div>
+
+
+        <div class="sidebar-primary-items__end sidebar-primary__section">
+        </div>
+
+        <div id="rtd-footer-container"></div>
+
+
+      </div>
+
+      <main id="main-content" class="bd-main" role="main">
+
+
+
+        <div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+
+            <div class="bd-header-article d-print-none">
+              <div class="header-article-items header-article__inner">
+
+                <div class="header-article-items__start">
+
+                  <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm"
+                      title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+                      <span class="fa-solid fa-bars"></span>
+                    </button></div>
+
+                </div>
+
+
+                <div class="header-article-items__end">
+
+                  <div class="header-article-item">
+
+                    <div class="article-header-buttons">
+
+
+
+
+
+                      <div class="dropdown dropdown-source-buttons">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" aria-label="Source repositories">
+                          <i class="fab fa-github"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+
+
+
+                          <li><a href="https://github.com/xavijuanola/lamirtest" target="_blank"
+                              class="btn btn-sm btn-source-repository-button dropdown-item" title="Source repository"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fab fa-github"></i>
+                              </span>
+                              <span class="btn__text-container">Repository</span>
+                            </a>
+                          </li>
+
+
+
+
+                          <li><a
+                              href="https://github.com/xavijuanola/lamirtest/issues/new?title=Issue%20on%20page%20%2Fch3_going_deep/dnns.html&body=Your%20issue%20content%20here."
+                              target="_blank" class="btn btn-sm btn-source-issues-button dropdown-item"
+                              title="Open an issue" data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-lightbulb"></i>
+                              </span>
+                              <span class="btn__text-container">Open issue</span>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+
+
+
+
+
+
+                      <div class="dropdown dropdown-download-buttons">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" aria-label="Download this page">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+
+
+
+                          <li><a href="../_sources/ch3_going_deep/dnns.md" target="_blank"
+                              class="btn btn-sm btn-download-source-button dropdown-item" title="Download source file"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-file"></i>
+                              </span>
+                              <span class="btn__text-container">.md</span>
+                            </a>
+                          </li>
+
+
+
+
+                          <li>
+                            <button onclick="window.print()" class="btn btn-sm btn-download-pdf-button dropdown-item"
+                              title="Print to PDF" data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-file-pdf"></i>
+                              </span>
+                              <span class="btn__text-container">.pdf</span>
+                            </button>
+                          </li>
+
+                        </ul>
+                      </div>
+
+
+
+
+                      <button onclick="toggleFullScreen()" class="btn btn-sm btn-fullscreen-button"
+                        title="Fullscreen mode" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+
+                        <span class="btn__icon-container">
+                          <i class="fas fa-expand"></i>
+                        </span>
+
+                      </button>
+
+
+
+                      <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only"
+                        aria-label="Color mode" data-bs-title="Color mode" data-bs-placement="bottom"
+                        data-bs-toggle="tooltip">
+                        <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light"
+                          title="Light"></i>
+                        <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark" title="Dark"></i>
+                        <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"
+                          title="System Settings"></i>
+                      </button>
+
+
+                      <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only"
+                        title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+                        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                      </button>
+                      <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar"
+                        data-bs-placement="bottom" data-bs-toggle="tooltip">
+                        <span class="fa-solid fa-list"></span>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div id="jb-print-docs-body" class="onlyprint">
+              <h1>On different DNN architectures</h1>
+              <!-- Table of contents -->
+              <div id="print-main-content">
+                <div id="jb-print-toc">
+
+                  <div>
+                    <h2> Contents </h2>
+                  </div>
+                  <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#a-bit-of-context">A bit of context</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#what-is-a-deep-net">What is a deep net?</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#multi-layer-perceptrons">Multi-layer perceptrons</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#convolutional-neural-networks">Convolutional Neural networks</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#recurrent-networks">Recurrent networks</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#gated-recurrent-units">Gated recurrent units</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#bi-directional-models">Bi-directional models</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#temporal-convolutional-networks">Temporal Convolutional networks</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#hybrid-architectures">Hybrid architectures</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#learning-and-optimization">Learning and optimization</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#activation-functions">Activation functions</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="searchbox"></div>
+            <article class="bd-article">
+
+              <section class="tex2jax_ignore mathjax_ignore" id="on-different-dnn-architectures">
+                <span id="dnns"></span>
+                <h1>On different DNN architectures<a class="headerlink" href="#on-different-dnn-architectures"
+                    title="Link to this heading">#</a></h1>
+                <p>Many different architectures have been explored, ranging from MLPs <span id="id1">[<a
+                      class="reference internal" href="../ch6_resources/references.html#id11"
+                      title="S. Durand, J. P. Bello, B. David, and G. Richard. Downbeat tracking with multiple features and deep neural networks. In 2015 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume. 2015. doi:10.1109/ICASSP.2015.7178001.">DBDR15</a>]</span>,
+                  CNNs <span id="id2">[<a class="reference internal" href="../ch6_resources/references.html#id60"
+                      title="S. Durand, J. P. Bello, B. David, and G. Richard. Feature adapted convolutional neural networks for downbeat tracking. In IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP). 2016.">DBDR16</a>,
+                    <a class="reference internal" href="../ch6_resources/references.html#id65"
+                      title="S. Durand, J. P. Bello, B. David, and G. Richard. Robust Downbeat Tracking Using an Ensemble of Convolutional Networks. IEEE/ACM Trans. on Audio, Speech, and Language Processing, 25(1):76-89, January 2017.">DBDR17</a>,
+                    <a class="reference internal" href="../ch6_resources/references.html#id64"
+                      title="S. Durand and S. Essid. Downbeat Detection With Conditional Random Fields And Deep Learned Features. In 17th Int. Soc. for Music Information Retrieval Conf. (ISMIR 2016), 386-392. New York, USA, August 2016.">DE16</a>,
+                    <a class="reference internal" href="../ch6_resources/references.html#id211"
+                      title="Andre Holzapfel and Thomas Grill. Bayesian meter tracking on learned signal representations. In ISMIR-International Conference on Music Information Retrieval, 262–268. ISMIR, 2016.">HG16</a>]</span>,
+                  RNNs <span id="id3">[<a class="reference internal" href="../ch6_resources/references.html#id63"
+                      title="S. Böck, F. Krebs, and G. Widmer. A Multi-model Approach to Beat Tracking Considering Heterogeneous Music Styles. In 15th Conf. of the Int. Soc. for Music Information Retrieval (ISMIR 2014), 603-608. Taipei, Taiwan, October 2014.">BockKW14a</a>,
+                    <a class="reference internal" href="../ch6_resources/references.html#id204"
+                      title="Florian Krebs, Andre Holzapfel, Ali Taylan Cemgil, and Gerhard Widmer. Inferring metrical structure in music using particle filters. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 23(5):817–827, 2015.">KHCW15</a>,
+                    <a class="reference internal" href="../ch6_resources/references.html#id232">ZNY19</a>]</span>,
+                  Bi-LSTMs <span id="id4">[<a class="reference internal" href="../ch6_resources/references.html#id214"
+                      title="S. Böck, F. Krebs, and G. Widmer. Joint beat and downbeat tracking with recurrent neural networks. In 17th International Society for Music Information Retrieval Conference (ISMIR). 2016.">BockKW16</a>]</span>,
+                  Bi-GRUs <span id="id5">[<a class="reference internal" href="../ch6_resources/references.html#id12"
+                      title="F. Krebs, S. Böck, M. Dorfer, and G. Widmer. Downbeat tracking using beat synchronous features with recurrent neural networks. In 17th International Society for Music Information Retrieval Conference (ISMIR). 2016.">KBockDW16</a>]</span>,
+                  CRNNs <span id="id6">[<a class="reference internal" href="../ch6_resources/references.html#id31"
+                      title="M. Fuentes, B. McFee, H.C. Crayencour, S. Essid, and J.P. Bello. A music structure informed downbeat tracking system using skip-chain conditional random fields and deep learning. In 44th Int. Conf. on Acoustics, Speech, and Signal Processing (ICASSP), 481-485. Brighton, UK, May 2019.">FMC+19</a>,
+                    <a class="reference internal" href="../ch6_resources/references.html#id9"
+                      title="Magdalena Fuentes, Brian McFee, Hélène Crayencour, Slim Essid, and Juan Bello. Analysis of common design choices in deep learning systems for downbeat tracking. In The 19th International Society for Music Information Retrieval Conference. 2018.">FMC+18</a>,
+                    <a class="reference internal" href="../ch6_resources/references.html#id224"
+                      title="Richard Vogl, Matthias Dorfer, Gerhard Widmer, and Peter Knees. Drum transcription via joint beat and drum modeling using convolutional recurrent neural networks. In ISMIR, 150–157. 2017.">VDWK17</a>]</span>
+                  and recently TCNs <span id="id7">[<a class="reference internal"
+                      href="../ch6_resources/references.html#id6"
+                      title="Sebastian Böck and Matthew EP Davies. Deconstruct, analyse, reconstruct: how to improve tempo, beat, and downbeat estimation. Proc. of ISMIR (International Society for Music Information Retrieval). Montreal, Canada, pages 574–582, 2020.">BockD20</a>,
+                    <a class="reference internal" href="../ch6_resources/references.html#id5"
+                      title="Sebastian Böck, Matthew EP Davies, and Peter Knees. Multi-task learning of tempo and beat: learning one to improve the other. In ISMIR, 486–493. 2019.">BockDK19</a>,
+                    <a class="reference internal" href="../ch6_resources/references.html#id4"
+                      title="EP MatthewDavies and Sebastian Böck. Temporal convolutional networks for musical audio beat tracking. In 2019 27th European Signal Processing Conference (EUSIPCO), 1–5. IEEE, 2019.">MBock19</a>]</span>.
+                  But, what have we learned from all this different approaches? Which one
+                  works better? What should we take into account when using a particular architecture? Some context and
+                  thoughts on this below.</p>
+                <section id="a-bit-of-context">
+                  <span id="dnns-context"></span>
+                  <h2>A bit of context<a class="headerlink" href="#a-bit-of-context" title="Link to this heading">#</a>
+                  </h2>
+                  <p>DNNs were introduced in MIR applications motivated by their huge success in computer vision, and
+                    due to recent advances that allow for faster training and scalability <span id="id8">[<a
+                        class="reference internal" href="../ch6_resources/references.html#id221"
+                        title="Ian Goodfellow, Yoshua Bengio, and Aaron Courville. Deep learning. MIT press, 2016.">GBC16</a>]</span>.
+                    The inclusion of these models in MIR tasks has meant a considerable improvement in the performance
+                    of automatic systems, in particular tempo, beat and downbeat tracking ones, as can be seen from the
+                    MIREX campaigns <span id="id9">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id231"
+                        title="Bijue Jia, Jiancheng Lv, and Dayiheng Liu. Deep learning-based automatic downbeat tracking: a brief review. Multimedia Systems, pages 1–22, 2019.">JLL19</a>]</span>.
+                    Moreover, the use of deep learning models presents other advantages over traditional machine
+                    learning methods used in MIR, i.e. they are flexible and adaptable across tasks. As an example,
+                    convolutional neural network based models from Computer Vision were adapted for
+                    onset detection <span id="id10">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id196"
+                        title="Jan Schlüter and Sebastian Böck. Improved musical onset detection with convolutional neural networks. In 2014 ieee international conference on acoustics, speech and signal processing (icassp), 6979–6983. IEEE, 2014.">SchluterBock14</a>]</span>,
+                    and then for segment boundary detection <span id="id11">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id138"
+                        title="Karen Ullrich, Jan Schlüter, and Thomas Grill. Boundary detection in music structure analysis using convolutional neural networks. In ISMIR, 417–422. 2014.">USchluterG14</a>]</span>.
+                    Furthermore, DNNs reduce —or allow to remove completely— the stage of hand-crafted feature design,
+                    by including the feature learning as part of the learning
+                    process.</p>
+                  <div class="admonition note">
+                    <p class="admonition-title">Note</p>
+                    <p>The adoption of DNNs exacerbated some issues related to the use of supervised learning models:
+                      <strong>their dependence on annotated data, the bias of the data itself and their lack of
+                        interpretability</strong>. Annotated data is an important bottleneck in MIR! Especially due to
+                      copyright issues, and because annotating a musical piece requires
+                      expert knowledge and is thus expensive. Also, models will be biased depending on the dataset used,
+                      a problem that also occurs in other learning-based approaches. Besides, deep-learning based
+                      methods are usually less interpretable than
+                      signal processing methods, making it a bit hard to predict the type of mistakes a DNN would do
+                      when presented with e.g. unseen music tracks or genres.
+                    </p>
+                  </div>
+                </section>
+                <section id="what-is-a-deep-net">
+                  <h2>What is a deep net?<a class="headerlink" href="#what-is-a-deep-net"
+                      title="Link to this heading">#</a></h2>
+                  <p>In general terms, a deep neural network consists of a composition of non-linear functions that acts
+                    as a function approximator <span class="math notranslate nohighlight">\(F_\omega: \mathbf{X}
+                      \rightarrow \mathbf{Y}\)</span>, for given input and output data <span
+                      class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span
+                      class="math notranslate nohighlight">\(\mathbf{Y}\)</span>.
+                    The network is parametrized by its weights <span
+                      class="math notranslate nohighlight">\(\omega\)</span>, whose values are optimized so the
+                    estimated output <span class="math notranslate nohighlight">\(\hat{\mathbf{Y}}=F_\omega
+                      (\mathbf{X})\)</span> approximates the desired output <span
+                      class="math notranslate nohighlight">\(\mathbf{Y}\)</span> given an input <span
+                      class="math notranslate nohighlight">\(\mathbf{X}\)</span>.</p>
+                </section>
+                <section id="multi-layer-perceptrons">
+                  <span id="dnns-mlps"></span>
+                  <h2>Multi-layer perceptrons<a class="headerlink" href="#multi-layer-perceptrons"
+                      title="Link to this heading">#</a></h2>
+                  <p>Multi-layer perceptrons (MLPs) are the simple and basic modules of DNNs. They are also known as
+                    <em>fully-connected layers</em> or <em>dense layers</em>, and consist of a sequence of layers, each
+                    defined by an affine transformation composed with a non-linearity:
+                  </p>
+                  <div class="math notranslate nohighlight">
+                    \[
+                    \mathbf{y} = f(\mathbf{W}^T \mathbf{x} + \mathbf{b}),
+                    \]</div>
+                  <p>where <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{d_{in}}\)</span> is
+                    the input, <span class="math notranslate nohighlight">\(\mathbf{y} \in \mathbb{R}^{d_{out}}\)</span>
+                    is the output, <span class="math notranslate nohighlight">\(\mathbf{b} \in
+                      \mathbb{R}^{d_{out}}\)</span> is called the <em>bias vector</em> and <span
+                      class="math notranslate nohighlight">\(\mathbf{W} \in \mathbb{R}^{d_{in} \times d_{out}}\)</span>
+                    is the weight matrix. <span class="math notranslate nohighlight">\(f()\)</span> is a non-linear
+                    activation function, which allows the model to learn non-linear
+                    representations. Note that for multi-dimensional inputs, e.g. <span
+                      class="math notranslate nohighlight">\(\mathbf{X} \in \mathbb{R}^{d_1 \times d_2}\)</span>, the
+                    input is flattened so <span class="math notranslate nohighlight">\(\mathbf{x} \in
+                      \mathbb{R}^{d}\)</span> with <span class="math notranslate nohighlight">\(d = d_1 \times
+                      d_2\)</span>. These layers are usually used to map the input to another space where hopefully the
+                    problem (e.g. classification or regression) can be solved more easily.</p>
+                  <div class="admonition note">
+                    <p class="admonition-title">Note</p>
+                    <p>However, by definition, this type of layer is not shift or scale invariant,
+                      meaning that when using this type of network for audio tasks, any small temporal or frequency
+                      shift needs dedicated parameters to be modelled, becoming very expensive and inconvenient when it
+                      comes to modelling music.</p>
+                  </div>
+                  <p>MLPs have been mainly used in early works before convolutional neural networks (CNNs) and recurrent
+                    neural networks (RNNs) became popular <span id="id12">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id222"
+                        title="Keunwoo Choi, György Fazekas, Kyunghyun Cho, and Mark Sandler. A tutorial on deep learning for music information retrieval. arXiv preprint arXiv:1709.04396, 2017.">CFCS17</a>]</span>,
+                    and are now used in combination with those architectures, usually as the last layers of a model to
+                    map high dimensional intermediate representations
+                    to the output space (e.g. classes), as discussed below.</p>
+                </section>
+                <section id="convolutional-neural-networks">
+                  <span id="dnns-cnns"></span>
+                  <h2>Convolutional Neural networks<a class="headerlink" href="#convolutional-neural-networks"
+                      title="Link to this heading">#</a></h2>
+                  <p>The main idea behind CNNs is to convolve their input with learnable kernels. Systems based on CNNs
+                    make the most of the capacity of such networks to learn invariant properties of the data while
+                    needing fewer parameters than other DNNs such as MLPs and being easier to train. Also, convolutions
+                    are suitable for retrieving changes in the input representations,
+                    which are (usually) indicators of beat and/or downbeat positions (e.g. changes in harmonic content
+                    or spectral energy). Besides, CNNs have shown to be good high-level feature extractors in music
+                    <span id="id13">[<a class="reference internal" href="../ch6_resources/references.html#id65"
+                        title="S. Durand, J. P. Bello, B. David, and G. Richard. Robust Downbeat Tracking Using an Ensemble of Convolutional Networks. IEEE/ACM Trans. on Audio, Speech, and Language Processing, 25(1):76-89, January 2017.">DBDR17</a>]</span>,
+                    and are able to express complex relations.
+                  </p>
+                  <p>CNNs can be designed to perform either 1-d or 2-d convolutions, or a combination of both. In the
+                    context of audio, in general 1-d convolutions are used in the temporal domain,
+                    whereas 2-d convolutions are usually applied to exploit time-frequency related information. We will
+                    focus on models that perform 2-d convolutions. The output of a convolutional layer is usually called
+                    <em>feature map</em>.
+                    In the context of audio applications, it is common to use CNN architectures combining convolutional
+                    and pooling layers. Pooling layers are used to down-sample feature maps between convolutional
+                    layers, so that deeper layers integrate larger extents of data.
+                    The most widely used pooling operator in the context of audio is <em>max-pooling</em>, which samples
+                    —usually— non-overlapping patches by keeping the biggest value in that region.
+                  </p>
+                  <div class="admonition note">
+                    <p class="admonition-title">Note</p>
+                    <p>The main disadvantage of
+                      CNNs is their lack of long-term context, which restrict the musical context and interplay with
+                      temporal scales that could improve their performance. This can be improved by combining CNNs with
+                      RNNs <span id="id14">[<a class="reference internal" href="../ch6_resources/references.html#id8"
+                          title="M. Fuentes, L. S. Maia, M. Rocamora, L. W. P. Biscainho, H. C. Crayencour, S. Essid, and J. P. Bello. Tracking beats and microtiming in afro-latin american music using conditional random fields and deep learning. In 20th International Society for Music Information Retrieval Conference, ISMIR. 2019.">FMR+19</a>,
+                        <a class="reference internal" href="../ch6_resources/references.html#id9"
+                          title="Magdalena Fuentes, Brian McFee, Hélène Crayencour, Slim Essid, and Juan Bello. Analysis of common design choices in deep learning systems for downbeat tracking. In The 19th International Society for Music Information Retrieval Conference. 2018.">FMC+18</a>,
+                        <a class="reference internal" href="../ch6_resources/references.html#id224"
+                          title="Richard Vogl, Matthias Dorfer, Gerhard Widmer, and Peter Knees. Drum transcription via joint beat and drum modeling using convolutional recurrent neural networks. In ISMIR, 150–157. 2017.">VDWK17</a>]</span>.
+                    </p>
+                  </div>
+                  <p>A convolutional layer is given by the following expression:</p>
+                  <div class="math notranslate nohighlight">
+                    \[
+                    \mathbf{Y}^j = f(\sum_{k=0} ^{K-1} \mathbf{W}^{kj}\: *\: \mathbf{X}^k + \mathbf{b}^j),
+                    \]</div>
+                  <p>where all <span class="math notranslate nohighlight">\(\mathbf{Y}^j\)</span>, <span
+                      class="math notranslate nohighlight">\(\mathbf{W}^{jk}\)</span>, and <span
+                      class="math notranslate nohighlight">\(\mathbf{X}^k\)</span> are 2-d, <span
+                      class="math notranslate nohighlight">\(\mathbf{b}\)</span> is the bias vector, <span
+                      class="math notranslate nohighlight">\(j\)</span> indicates the j-th output channel, and <span
+                      class="math notranslate nohighlight">\(k\)</span> indicates the k-th input channel.
+                    The input is a tensor <span class="math notranslate nohighlight">\(\mathbf{X} \in
+                      \mathbb{R}^{T\times F \times d}\)</span>, where <span
+                      class="math notranslate nohighlight">\(T\)</span> and <span
+                      class="math notranslate nohighlight">\(F\)</span> refer to the temporal and spatial—usually
+                    frequency—axes, and <span class="math notranslate nohighlight">\(d\)</span> denotes a
+                    non-convolutional dimension or <em>channel</em>.
+                    In most audio applications <span class="math notranslate nohighlight">\(d\)</span> usually equals
+                    one, though sometimes is used to encode multiple channels or multiple representations of the input
+                    (e.g. each channel is one representation).
+                    Note that while <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> and <span
+                      class="math notranslate nohighlight">\(\mathbf{X}\)</span> are 3-d arrays (with axes for height,
+                    width and channel), <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> is a 4-d array,
+                    so <span class="math notranslate nohighlight">\(\mathbf{W} \in \mathbb{R}^{h \times l
+                      \times d_{in} \times d_{out}}\)</span>, <span class="math notranslate nohighlight">\(h\)</span>
+                    and <span class="math notranslate nohighlight">\(l\)</span> being the dimensions of the convolution,
+                    and the 3rd and 4th dimensions account for the relation between input and output channels.</p>
+                  <div class="admonition tip">
+                    <p class="admonition-title">Tip</p>
+                    <p>CNNs are suitable to problems that have two characteristics <span id="id15">[<a
+                          class="reference internal" href="../ch6_resources/references.html#id226"
+                          title="Brian McFee. Statistical Methods for Scene and Event Classification, pages 103–146. Springer International Publishing, Cham, 2018. URL: https://doi.org/10.1007/978-3-319-63450-0_5, doi:10.1007/978-3-319-63450-0_5.">McF18</a>]</span>:
+                      statistically meaningful information tends to concentrate locally (e.g. within a window around an
+                      event),
+                      and shift-invariance (e.g. in time or frequency) can be used to reduce model complexity by reusing
+                      kernels’ weights with multiple inputs.</p>
+                  </div>
+                </section>
+                <section id="recurrent-networks">
+                  <span id="dnns-rnns"></span>
+                  <h2>Recurrent networks<a class="headerlink" href="#recurrent-networks"
+                      title="Link to this heading">#</a></h2>
+                  <p>Many approaches exploited recurrent neural networks given their suitability to process sequential
+                    data. In theory, recurrent architectures are flexible in terms of the temporal context they can
+                    model, which makes them appealing for music applications.
+                    In practice there are some limitations on the amount of context they can effectively learn <span
+                      id="id16">[<a class="reference internal" href="../ch6_resources/references.html#id234"
+                        title="Alexander Greaves-Tunnell and Zaid Harchaoui. A statistical investigation of long memory in language and music. arXiv preprint arXiv:1904.03834, 2019.">GTH19</a>]</span>,
+                    and although it is clear that they can learn close metrical levels such as beats and downbeats
+                    <span id="id17">[<a class="reference internal" href="../ch6_resources/references.html#id214"
+                        title="S. Böck, F. Krebs, and G. Widmer. Joint beat and downbeat tracking with recurrent neural networks. In 17th International Society for Music Information Retrieval Conference (ISMIR). 2016.">BockKW16</a>]</span>,
+                    is not clear if they can successfully learn interrelationships between farther temporal scales in
+                    music.
+                  </p>
+                  <p>Unlike CNNs which are effective at modelling fixed-length local interactions, <em>recurrent neural
+                      networks</em> (RNNs) are good in modelling variable-length long-term interactions. RNNs exploit
+                    recurrent connections since they are formulated as <span id="id18">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id221"
+                        title="Ian Goodfellow, Yoshua Bengio, and Aaron Courville. Deep learning. MIT press, 2016.">GBC16</a>]</span>:
+                  </p>
+                  <div class="math notranslate nohighlight">
+                    \[\begin{split}
+                    \begin{align}
+                    \mathbf{y}_t = f_{y}(\mathbf{W}_y\:\mathbf{h}_t + \mathbf{b}_y), \label{eq:rnn_def_1}\\
+                    \mathbf{h}_t = f_{h}(\mathbf{W}_h\:\mathbf{x}_t + \mathbf{U}\: \mathbf{h}_{t-1} +
+                    \mathbf{b}_h),\label{eq:rnn_def_2}
+                    \end{align}
+                    \end{split}\]</div>
+                  <p>where <span class="math notranslate nohighlight">\(\mathbf{h}_t\)</span> is a hidden <em>state
+                      vector</em> that stores information at time <span
+                      class="math notranslate nohighlight">\(t\)</span>, <span
+                      class="math notranslate nohighlight">\(f_y\)</span> and <span
+                      class="math notranslate nohighlight">\(f_h\)</span> are the non-linearities of the output and
+                    hidden state respectively, and <span class="math notranslate nohighlight">\(\mathbf{W}_y,
+                      \mathbf{W}_h\)</span> and <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> are
+                    matrices of trainable weights.
+                    An RNN integrates information over time up to time step <span
+                      class="math notranslate nohighlight">\(t\)</span> to estimate the state vector <span
+                      class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>, being suitable to model sequential
+                    data.
+                    Note that learning the weights <span class="math notranslate nohighlight">\(\mathbf{W}_y,
+                      \mathbf{W}_h\)</span> and <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> in a
+                    RNN is challenging given the dependency of the gradient on the entire state sequence <span
+                      id="id19">[<a class="reference internal" href="../ch6_resources/references.html#id226"
+                        title="Brian McFee. Statistical Methods for Scene and Event Classification, pages 103–146. Springer International Publishing, Cham, 2018. URL: https://doi.org/10.1007/978-3-319-63450-0_5, doi:10.1007/978-3-319-63450-0_5.">McF18</a>]</span>.
+                    In practice, <em>back-propagation through time</em> is used
+                    <span id="id20">[<a class="reference internal" href="../ch6_resources/references.html#id149"
+                        title="Paul J Werbos and others. Backpropagation through time: what it does and how to do it. Proceedings of the IEEE, 78(10):1550–1560, 1990.">W+90</a>]</span>,
+                    which consists in unrolling the equation above up to <span
+                      class="math notranslate nohighlight">\(k\)</span> time steps and applying standard back
+                    propagation. Given the accumulative effect of applying <span
+                      class="math notranslate nohighlight">\(\mathbf{U}\)</span> when unrolling the equation above, the
+                    gradient values tend to either vanish or explode if <span
+                      class="math notranslate nohighlight">\(k\)</span> is too big, a problem known as the <em>vanishing
+                      and exploding gradient problem</em>. For that reason, in practice the value of <span
+                      class="math notranslate nohighlight">\(k\)</span> is limited to account for relatively short
+                    sequences.
+                  </p>
+                  <div class="admonition note">
+                    <p class="admonition-title">Note</p>
+                    <p>The most commonly used variations of RNNs, that were designed to mitigate the vanishing/exploding
+                      problem of the gradient, include the addition of <em>gates</em> that control the flow of
+                      information through the network. The most popular ones in MIR applications are <em>long-short
+                        memory units</em> (LSTMs) <span id="id21">[<a class="reference internal"
+                          href="../ch6_resources/references.html#id153"
+                          title="Sepp Hochreiter and Jürgen Schmidhuber. Long short-term memory. Neural computation, 9(8):1735–1780, 1997.">HS97</a>]</span>
+                      and <em>gated recurrent units</em> (GRUs) <span id="id22">[<a class="reference internal"
+                          href="../ch6_resources/references.html#id14"
+                          title="K. Cho, B. Van Merriënboer, C. Gulcehre, D. Bahdanau, F. Bougares, H. Schwenk, and Y. Bengio. Learning phrase representations using rnn encoder-decoder for statistical machine translation. arXiv preprint arXiv:1406.1078, 2014.">CVMerrienboerG+14</a>]</span>.
+                      Since they show similar
+                      empirical results, we only discuss GRUs below.</p>
+                  </div>
+                </section>
+                <section id="gated-recurrent-units">
+                  <h2>Gated recurrent units<a class="headerlink" href="#gated-recurrent-units"
+                      title="Link to this heading">#</a></h2>
+                  <p>In a GRU layer, the <em>gate</em> variables <span
+                      class="math notranslate nohighlight">\(\mathbf{r}_t\)</span> and <span
+                      class="math notranslate nohighlight">\(\mathbf{u}_t\)</span> —named as <em>reset</em> and
+                    <em>update</em> vectors— control the updates to the state vector <span
+                      class="math notranslate nohighlight">\(\mathbf{h}_t\)</span>, which is a combination of the
+                    previous state <span class="math notranslate nohighlight">\(\mathbf{h}_{t-1}\)</span> and a proposed
+                    next state
+                    <span class="math notranslate nohighlight">\(\hat{\mathbf{h}}_t\)</span>. The equations that rule
+                    these updates are given by:
+                  </p>
+                  <div class="math notranslate nohighlight">
+                    \[\begin{split}
+                    \begin{align}
+                    \mathbf{r}_t = f_g(\mathbf{W}_r \mathbf{x}_t + \mathbf{U}_r \mathbf{h}_{t-1} + \mathbf{b}_r),
+                    \label{eq:gru_def_1}\\
+                    \mathbf{u}_t = f_g(\mathbf{W}_u \mathbf{x}_t + \mathbf{U}_u \mathbf{h}_{t-1} +
+                    \mathbf{b}_u),\label{eq:gru_def_2}\\
+                    \hat{\mathbf{h}}_t = f_h(\mathbf{W}_h \mathbf{x}_t + \mathbf{U}_h (\mathbf{r}_t\odot
+                    \mathbf{h}_{t-1}) + \mathbf{b}_h), \label{eq:gru_def_3}\\
+                    \mathbf{h}_t = \mathbf{u}_t\odot \mathbf{h}_{t-1} + (1-\mathbf{u}_t)\odot
+                    \hat{\mathbf{h}}_t;\label{eq:gru_def_4}
+                    \end{align}
+                    \end{split}\]</div>
+                  <p><span class="math notranslate nohighlight">\(\odot\)</span> indicates the element-wise Hadamard
+                    product, <span class="math notranslate nohighlight">\(f_g\)</span> is the activation applied to the
+                    reset and update vectors, and <span class="math notranslate nohighlight">\(f_h\)</span> is the
+                    output activation. <span class="math notranslate nohighlight">\(\mathbf{W}_r, \mathbf{W}_u,
+                      \mathbf{W}_h \in \mathbb{R}^{d_{i-1}\times d_i}\)</span> are the input weights, <span
+                      class="math notranslate nohighlight">\(\mathbf{U}_r,
+                      \mathbf{U}_u, \mathbf{U}_h \in \mathbb{R}^{d_{i}\times d_i}\)</span> are the recurrent weights and
+                    <span class="math notranslate nohighlight">\(\mathbf{b}_r, \mathbf{b}_u, \mathbf{b}_h \in
+                      \mathbb{R}^{d_{i}}\)</span> are the biases. The activation functions <span
+                      class="math notranslate nohighlight">\(f_g\)</span> and <span
+                      class="math notranslate nohighlight">\(f_h\)</span> are typically sigmoid and tanh, since
+                    saturating functions
+                    help to avoid exploding gradients in recurrent networks.
+                  </p>
+                  <p>The GRU operates as follows: when <span
+                      class="math notranslate nohighlight">\(\mathbf{u}_t\)</span> is close to 1, the previous
+                    observation <span class="math notranslate nohighlight">\(\mathbf{h}_{t-1}\)</span> dominates in the
+                    equations above. When <span class="math notranslate nohighlight">\(\mathbf{u}_t\)</span> gets close
+                    to 0, depending on the value of <span class="math notranslate nohighlight">\(\mathbf{r}_t\)</span>,
+                    either a new state is updated with the
+                    standard recurrent equation by <span class="math notranslate nohighlight">\(\hat{\mathbf{h}}_t =
+                      f(\mathbf{W}_h \mathbf{x}_t + \mathbf{v}_h \mathbf{h}_{t-1} + \mathbf{b}_h)\)</span>, if <span
+                      class="math notranslate nohighlight">\(\mathbf{r}_t=1\)</span>, or the state is <em>reset</em> as
+                    if the <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> was the first observation
+                    in the sequence by
+                    <span class="math notranslate nohighlight">\(\hat{\mathbf{h}}_t = f(\mathbf{W}_h \mathbf{x}_t +
+                      \mathbf{b}_h)\)</span>.
+                  </p>
+                  <div class="admonition tip">
+                    <p class="admonition-title">Tip</p>
+                    <p>The reset variables allow GRUs to successfully model long-term interactions, and perform
+                      comparably to LSTMs, but GRUs are simpler since LSTMs have three gate vectors and one extra
+                      <em>memory</em> gate. Empirical studies show that both networks perform comparably
+                      while GRUs are faster to train <span id="id23">[<a class="reference internal"
+                          href="../ch6_resources/references.html#id16"
+                          title="Klaus Greff, Rupesh K Srivastava, Jan Koutník, Bas R Steunebrink, and Jürgen Schmidhuber. Lstm: a search space odyssey. IEEE transactions on neural networks and learning systems, 28(10):2222–2232, 2016.">GSKoutnik+16</a>,
+                        <a class="reference internal" href="../ch6_resources/references.html#id15"
+                          title="Rafal Jozefowicz, Wojciech Zaremba, and Ilya Sutskever. An empirical exploration of recurrent network architectures. In International Conference on Machine Learning, 2342–2350. 2015.">JZS15</a>]</span>.
+                    </p>
+                  </div>
+                </section>
+                <section id="bi-directional-models">
+                  <h2>Bi-directional models<a class="headerlink" href="#bi-directional-models"
+                      title="Link to this heading">#</a></h2>
+                  <p>GRUs and RNNs in general are designed to integrate information in one direction, e.g. in an audio
+                    application they integrate information forward in time. However, it can be beneficial to integrate
+                    information in both directions, and so has been the case for neural networks
+                    in audio applications such as beat tracking <span id="id24">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id215"
+                        title="Sebastian Böck and Markus Schedl. Enhanced beat tracking with context-aware neural networks. In Proc. Int. Conf. Digital Audio Effects, 135–139. 2011.">BockS11</a>]</span>
+                    or environmental sound detection <span id="id25">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id217"
+                        title="Giambattista Parascandolo, Heikki Huttunen, and Tuomas Virtanen. Recurrent neural networks for polyphonic sound event detection in real life recordings. In 2016 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 6440–6444. IEEE, 2016.">PHV16</a>]</span>.
+                    A bi-directional recurrent neural network (Bi-RNN) <span id="id26">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id152"
+                        title="Mike Schuster and Kuldip K Paliwal. Bidirectional recurrent neural networks. IEEE Transactions on Signal Processing, 45(11):2673–2681, 1997.">SP97</a>]</span>
+                    in the context of audio consists of two RNNs running
+                    in opposite time directions with their hidden vectors <span
+                      class="math notranslate nohighlight">\(\mathbf{h}_t ^f\)</span> and <span
+                      class="math notranslate nohighlight">\(\mathbf{h}_t ^b\)</span> being concatenated, so the output
+                    <span class="math notranslate nohighlight">\(h_t\)</span> at time <span
+                      class="math notranslate nohighlight">\(t\)</span> has information about the entire sequence.
+                    Unless the application is online, Bi-RNNs are usually preferred due to better performance
+                    <span id="id27">[<a class="reference internal" href="../ch6_resources/references.html#id226"
+                        title="Brian McFee. Statistical Methods for Scene and Event Classification, pages 103–146. Springer International Publishing, Cham, 2018. URL: https://doi.org/10.1007/978-3-319-63450-0_5, doi:10.1007/978-3-319-63450-0_5.">McF18</a>]</span>.
+                  </p>
+                </section>
+                <section id="temporal-convolutional-networks">
+                  <span id="dnns-tcnns"></span>
+                  <h2>Temporal Convolutional networks<a class="headerlink" href="#temporal-convolutional-networks"
+                      title="Link to this heading">#</a></h2>
+                  <p>A “simple” convolution is only able to consider the context up to a size linear in the depth of the
+                    network. This
+                    makes it challenging to apply them on sequential data, because the amount of context they can handle
+                    is small. In the
+                    context of beat and downbeat tracking systems, that might mean that the input granularity should be
+                    coarser if we want to
+                    guarantee that enough context is taken into account for e.g. downbeat tracking. Instead, Temporal
+                    Convolutional Networks (TCNs)
+                    <span id="id28">[<a class="reference internal" href="../ch6_resources/references.html#id2"
+                        title="Shaojie Bai, J. Zico Kolter, and Vladlen Koltun. An empirical evaluation of generic convolutional and recurrent networks for sequence modeling. CoRR, 2018. URL: http://arxiv.org/abs/1803.01271, arXiv:1803.01271.">BKK18</a>]</span>
+                    use dilated convolutions which enable exponentially large receptive fields! Formally, for a 1-D
+                    sequence input <span class="math notranslate nohighlight">\(\mathbf{x} \in
+                      \mathbb{R}^d_{in}\)</span> and a filter <span class="math notranslate nohighlight">\(f : \{0,
+                      \dots, k − 1\} \rightarrow \mathbb{R}\)</span>, the dilated convolution
+                    operation <span class="math notranslate nohighlight">\(F\)</span> on element <span
+                      class="math notranslate nohighlight">\(s\)</span> of the sequence is defined as:
+                  </p>
+                  <div class="math notranslate nohighlight">
+                    \[
+                    F(s) = \sum _{i=0} ^{k-1} f(i) x_{s−d·i}
+                    \]</div>
+                  <p>where <span class="math notranslate nohighlight">\(d\)</span> is the dilation factor, <span
+                      class="math notranslate nohighlight">\(k\)</span> is the filter size, and <span
+                      class="math notranslate nohighlight">\(s − d ·i\)</span> accounts for the direction of the past.
+                    Dilation is equivalent to introducing a fixed step between every two adjacent filter taps, i.e.
+                    skipping samples in the audio.
+                    When <span class="math notranslate nohighlight">\(d = 1\)</span>, a dilated convolution becomes a
+                    regular convolution.</p>
+                  <figure class="align-default" id="tcn">
+                    <img alt="TCN" src="assets/ch3_going_deep/figs/tcn.png" />
+                    <figcaption>
+                      <p><span class="caption-text">Overview of the TCN structure from <span id="id29">[<a
+                              class="reference internal" href="../ch6_resources/references.html#id4"
+                              title="EP MatthewDavies and Sebastian Böck. Temporal convolutional networks for musical audio beat tracking. In 2019 27th European Signal Processing Conference (EUSIPCO), 1–5. IEEE, 2019.">MBock19</a>]</span>.</span><a
+                          class="headerlink" href="#tcn" title="Link to this image">#</a></p>
+                    </figcaption>
+                  </figure>
+                  <p>Intuitively, TCNs perform convolutions across sub-sampled input representations and are good at
+                    learning sequential/temporal structure,
+                    since they retain the parallelisation property of standard CNNs but can handle much more context.
+                    Besides, TCNs can be trained
+                    far more efficiently than a RNN, LSTM or GRU from a computational perspective, and with much less
+                    number of weights. Given this
+                    advantages, TCNs are taking over these recurrent networks in many sequential tasks.</p>
+                  <div class="dropdown admonition">
+                    <p class="admonition-title">SPOILER ALERT!!</p>
+                    <p>Because of being light, fast to train and have great performance, we’re using TCNs for the hands
+                      on part of the tutorial!</p>
+                  </div>
+                </section>
+                <section id="hybrid-architectures">
+                  <h2>Hybrid architectures<a class="headerlink" href="#hybrid-architectures"
+                      title="Link to this heading">#</a></h2>
+                  <p>As mentioned before, MLPs are now usually being used in combination with CNNs, which are able to
+                    overcome the lack of shift and scale invariance MLPs suffer. At the same time, MLPs offer a simple
+                    alternative for mapping representations from a big-dimensional space to a
+                    smaller one, suitable for classification problems.</p>
+                  <p>Finally, hybrid architectures that integrate convolutional and recurrent networks have recently
+                    become popular and have proven to be effective in audio applications, especially in MIR <span
+                      id="id30">[<a class="reference internal" href="../ch6_resources/references.html#id118"
+                        title="Brian McFee and Juan P. Bello. Structured training for large-vocabulary chord recognition. In 18th International Society for Music Information Retrieval Conference, ISMIR. 2017.">MB17</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id220"
+                        title="Siddharth Sigtia, Emmanouil Benetos, and Simon Dixon. An end-to-end neural network for polyphonic piano music transcription. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 24(5):927–939, 2016.">SBD16</a>]</span>.
+                    They integrate local feature learning with
+                    global feature integration, a playground between time scales that is in particular interesting for
+                    beat and downbeat tracking.</p>
+                </section>
+                <section id="learning-and-optimization">
+                  <h2>Learning and optimization<a class="headerlink" href="#learning-and-optimization"
+                      title="Link to this heading">#</a></h2>
+                  <p>To optimize the parameters <span class="math notranslate nohighlight">\(\omega\)</span>, a variant
+                    of gradient descent is usually exploited. A <em>loss function</em> <span
+                      class="math notranslate nohighlight">\(J(\omega)\)</span> measures the difference between the
+                    predicted and desired outputs <span class="math notranslate nohighlight">\(\hat{\mathbf{Y}}\)</span>
+                    and <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>, so the main idea behind the
+                    optimization process is
+                    to iteratively update the weights <span class="math notranslate nohighlight">\(\omega\)</span> so
+                    the loss function decreases, that is:</p>
+                  <div class="math notranslate nohighlight">
+                    \[
+                    \omega \leftarrow \omega - \eta \nabla_\omega J(\omega).
+                    \]</div>
+                  <p>Where <span class="math notranslate nohighlight">\(\eta\)</span> is the <em>learning rate</em>
+                    which controls how much to update the values of <span
+                      class="math notranslate nohighlight">\(\omega\)</span> at each iteration. Because the DNN consists
+                    of a composition of functions, the gradient of <span
+                      class="math notranslate nohighlight">\(J(\omega)\)</span>, <span
+                      class="math notranslate nohighlight">\(\nabla \omega J(\omega)\)</span>, is obtained via the chain
+                    rule, a process known as
+                    <em>back propagation</em>. In the last four years, many software packages that implement automatic
+                    differentiation tools and various versions of gradient descent were released, <span id="id31">[<a
+                        class="reference internal" href="../ch6_resources/references.html#id206"
+                        title="Mart\'ın Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen, Craig Citro, Greg S. Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin, Sanjay Ghemawat, Ian Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard, Yangqing Jia, Rafal Jozefowicz, Lukasz Kaiser, Manjunath Kudlur, Josh Levenberg, Dandelion Mané, Rajat Monga, Sherry Moore, Derek Murray, Chris Olah, Mike Schuster, Jonathon Shlens, Benoit Steiner, Ilya Sutskever, Kunal Talwar, Paul Tucker, Vincent Vanhoucke, Vijay Vasudevan, Fernanda Viégas, Oriol Vinyals, Pete Warden, Martin Wattenberg, Martin Wicke, Yuan Yu, and Xiaoqiang Zheng. TensorFlow: large-scale machine learning on heterogeneous systems. 2015. Software available from tensorflow.org. URL: https://www.tensorflow.org/.">AAB+15</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id143"
+                        title="François Chollet and others. Keras. https://keras.io, 2015.">C+15</a>, <a
+                        class="reference internal" href="../ch6_resources/references.html#id218"
+                        title="Theano Development Team. Theano: A Python framework for fast computation of mathematical expressions. arXiv e-prints, May 2016. URL: http://arxiv.org/abs/1605.02688.">TheanoDTeam16</a>]</span>,
+                    reducing considerably the time needed for the
+                    implementation of such models.
+                  </p>
+                  <p>Since computing the gradient over a large training set is very expensive both in memory and
+                    computational complexity, a widely adopted variant of gradient descent is <em>Stochastic Gradient
+                      Descent</em> (SGD) <span id="id32">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id150"
+                        title="Léon Bottou. Stochastic gradient learning in neural networks. Proceedings of Neuro-Nımes, 91(8):12, 1991.">Bot91</a>]</span>,
+                    which approximates the gradient at each
+                    step on a mini-batch of training samples, <span class="math notranslate nohighlight">\(B\)</span>,
+                    considerably smaller than the training set. There are other variants of SGD such as
+                    <em>momentum</em> methods or <em>adaptive update</em> schemes that accelerate convergence
+                    dramatically, by re-using information of previous gradients
+                    (momentum) and reducing the dependence on <span
+                      class="math notranslate nohighlight">\(\eta\)</span>. From 2017, the most popular method for
+                    optimizing DNNs has been the adaptive method ADAM <span id="id33">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id17"
+                        title="D. Kingma and J. Ba. Adam: a method for stochastic optimization. arXiv preprint arXiv:1412.6980, 2014.">KB14</a>]</span>.
+                  </p>
+                  <p>Another common practice in the optimization of DNNs is to use <em>early stopping</em> as
+                    regularization <span id="id34">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id151"
+                        title="Jonas Sjöberg and Lennart Ljung. Overtraining, regularization and searching for a minimum, with application to neural networks. International Journal of Control, 62(6):1391–1407, 1995.">SjobergL95</a>]</span>,
+                    which means to stop training if the training –or validation– loss is not improving after a certain
+                    amount of iterations. Finally,
+                    <em>batch normalization</em> (BN) <span id="id35">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id20"
+                        title="S. Ioffe and C. Szegedy. Batch normalization: accelerating deep network training by reducing internal covariate shift. In 32nd International Conference on Machine Learning (ICML). 2015.">IS15</a>]</span>
+                    is widely used in practice as well, and consists of scaling the data by estimating its statistics
+                    during training, which usually leads to better performance and faster convergence.
+                  </p>
+                </section>
+                <section id="activation-functions">
+                  <h2>Activation functions<a class="headerlink" href="#activation-functions"
+                      title="Link to this heading">#</a></h2>
+                  <p>The expressive power of DNNs is in great extent due to the use of non-linearities <span
+                      class="math notranslate nohighlight">\(f()\)</span> in the model. The type of non-linearity used
+                    depends on whether it is an internal layer or the output layer. Many different options have been
+                    explored in the literature for
+                    intermediate-layer non-linearities —usually named <em>transfer functions</em>, the two main groups
+                    being saturating or non-saturating functions (e.g. <em>tanh</em> or <em>sigmoid</em> for saturated,
+                    because they saturate in 0 and 1, and <em>rectified linear units</em> (ReLUs)
+                    <span id="id36">[<a class="reference internal" href="../ch6_resources/references.html#id179"
+                        title="Vinod Nair and Geoffrey E Hinton. Rectified linear units improve restricted boltzmann machines. In Proceedings of the 27th international conference on machine learning (ICML-10), 807–814. 2010.">NH10</a>]</span>
+                    for non-saturating ones). Usually non-saturating activations are preferred in practice for being
+                    simpler to train and increasing training speed <span id="id37">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id226"
+                        title="Brian McFee. Statistical Methods for Scene and Event Classification, pages 103–146. Springer International Publishing, Cham, 2018. URL: https://doi.org/10.1007/978-3-319-63450-0_5, doi:10.1007/978-3-319-63450-0_5.">McF18</a>]</span>.
+                  </p>
+                </section>
+              </section>
+
+              <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch3_going_deep"
+        },
+        predefinedOutput: true
+    }
+    </script>
+              <script>kernelName = 'python3'</script>
+
+            </article>
+
+
+
+
+
+
+            <footer class="prev-next-footer d-print-none">
+
+              <div class="prev-next-area">
+              </div>
+            </footer>
+
+          </div>
+
+
+
+          <dialog id="pst-secondary-sidebar-modal"></dialog>
+          <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc">
+            <div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+              <div class="sidebar-secondary-item">
+                <div class="page-toc tocsection onthispage">
+                  <i class="fa-solid fa-list"></i> Contents
+                </div>
+                <nav class="bd-toc-nav page-toc">
+                  <ul class="visible nav section-nav flex-column">
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#a-bit-of-context">A bit of context</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#what-is-a-deep-net">What is a deep net?</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#multi-layer-perceptrons">Multi-layer perceptrons</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#convolutional-neural-networks">Convolutional Neural networks</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#recurrent-networks">Recurrent networks</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#gated-recurrent-units">Gated recurrent units</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#bi-directional-models">Bi-directional models</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#temporal-convolutional-networks">Temporal Convolutional networks</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#hybrid-architectures">Hybrid architectures</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#learning-and-optimization">Learning and optimization</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#activation-functions">Activation functions</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+        <footer class="bd-footer-content">
+
+          <div class="bd-footer-content__inner container">
+
+            <div class="footer-item">
+
+              <p class="component-author">
+                By Matthew E. P. Davies, Sebastian Bock, Magdalena Fuentes
+              </p>
+
+            </div>
+
+            <div class="footer-item">
+
+
+              <p class="copyright">
+
+                © Copyright 2024.
+                <br />
+
+              </p>
+
+            </div>
+
+            <div class="footer-item">
+
+            </div>
+
+            <div class="footer-item">
+
+            </div>
+
+          </div>
+        </footer>
+
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+</body>
+
+</html>

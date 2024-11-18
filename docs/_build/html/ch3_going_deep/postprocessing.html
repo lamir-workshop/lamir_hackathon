@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Post-processing &#8212; My sample book</title>
+
+
+
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only {
+        display: none !important;
+      }
+    </style>
+  </noscript>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+  <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+  <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  <link rel="stylesheet" type="text/css"
+    href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+  <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+  <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+  <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+  <script src="../_static/doctools.js?v=9a2dae69"></script>
+  <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+  <script src="../_static/copybutton.js?v=f281be69"></script>
+  <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+  <script>let toggleHintShow = 'Click to show';</script>
+  <script>let toggleHintHide = 'Click to hide';</script>
+  <script>let toggleOpenOnPrint = 'true';</script>
+  <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+  <script src="../_static/design-tabs.js?v=f930bc37"></script>
+  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+  <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+  <script>window.MathJax = { "options": { "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area" } }</script>
+  <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>DOCUMENTATION_OPTIONS.pagename = 'ch3_going_deep/postprocessing';</script>
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en" />
+  <meta name="docsearch:version" content="" />
+</head>
+
+
+<body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%"
+  data-default-mode="">
+
+
+
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  <div id="pst-scroll-pixel-helper"></div>
+
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+
+  <dialog id="pst-search-dialog">
+
+    <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" class="form-control" name="q" placeholder="Search this book..."
+        aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+      <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+    </form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+    <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  </div>
+
+
+  <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+  </header>
+
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+
+
+
+
+
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+
+
+
+        <div class="sidebar-header-items sidebar-primary__section">
+
+
+
+
+        </div>
+
+        <div class="sidebar-primary-items__start sidebar-primary__section">
+          <div class="sidebar-primary-item">
+
+
+
+
+
+            <a class="navbar-brand logo" href="../intro.html">
+
+
+
+
+
+
+
+
+
+
+              <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home" />
+              <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home" />
+
+
+            </a>
+          </div>
+          <div class="sidebar-primary-item">
+
+            <button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search"
+              data-bs-placement="bottom" data-bs-toggle="tooltip">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="search-button__default-text">Search</span>
+              <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd
+                  class="kbd-shortcut__modifier">K</kbd></span>
+            </button>
+          </div>
+          <div class="sidebar-primary-item">
+            <nav class="bd-links bd-docs-nav" aria-label="Main">
+              <div class="bd-toc-item navbar-nav active">
+
+                <ul class="nav bd-sidenav bd-sidenav__home-link">
+                  <li class="toctree-l1">
+                    <a class="reference internal" href="../intro.html">
+                      LAMIR Hackathon 2024
+                    </a>
+                  </li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intorduction</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch1_intro/tutorial_structure.html">Tutorial structure and setup</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ch1_intro/tutorial_scope.html">Tutorial
+                      scope and prerequisites</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Setting up a deep learning
+                    project</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal" href="../ch2_basics/wandb.html">Weights and
+                      Biases</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Beat tracking with few
+                    data</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal" href="beat_tracking_with_few_data.html">Design
+                      decisions for tempo, beat, and downbeat</a></li>
+
+
+
+
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Source separation with few
+                    data and artificial mixtures</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch4_going_deeper/source_separation_with_few_data.html">Hands on!</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discussion and
+                    conclusions</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch5_discussion/open_challenges.html">Concluding remarks</a></li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+                <ul class="nav bd-sidenav">
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch6_resources/references.html">References</a></li>
+                  <li class="toctree-l1"><a class="reference internal"
+                      href="../ch6_resources/acknowledgments.html">Acknowledgments</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ch6_resources/authors.html">About the
+                      Authors</a></li>
+                </ul>
+
+              </div>
+            </nav>
+          </div>
+        </div>
+
+
+        <div class="sidebar-primary-items__end sidebar-primary__section">
+        </div>
+
+        <div id="rtd-footer-container"></div>
+
+
+      </div>
+
+      <main id="main-content" class="bd-main" role="main">
+
+
+
+        <div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+
+            <div class="bd-header-article d-print-none">
+              <div class="header-article-items header-article__inner">
+
+                <div class="header-article-items__start">
+
+                  <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm"
+                      title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+                      <span class="fa-solid fa-bars"></span>
+                    </button></div>
+
+                </div>
+
+
+                <div class="header-article-items__end">
+
+                  <div class="header-article-item">
+
+                    <div class="article-header-buttons">
+
+
+
+
+
+                      <div class="dropdown dropdown-source-buttons">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" aria-label="Source repositories">
+                          <i class="fab fa-github"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+
+
+
+                          <li><a href="https://github.com/xavijuanola/lamirtest" target="_blank"
+                              class="btn btn-sm btn-source-repository-button dropdown-item" title="Source repository"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fab fa-github"></i>
+                              </span>
+                              <span class="btn__text-container">Repository</span>
+                            </a>
+                          </li>
+
+
+
+
+                          <li><a
+                              href="https://github.com/xavijuanola/lamirtest/issues/new?title=Issue%20on%20page%20%2Fch3_going_deep/postprocessing.html&body=Your%20issue%20content%20here."
+                              target="_blank" class="btn btn-sm btn-source-issues-button dropdown-item"
+                              title="Open an issue" data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-lightbulb"></i>
+                              </span>
+                              <span class="btn__text-container">Open issue</span>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+
+
+
+
+
+
+                      <div class="dropdown dropdown-download-buttons">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" aria-label="Download this page">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+
+
+
+                          <li><a href="../_sources/ch3_going_deep/postprocessing.md" target="_blank"
+                              class="btn btn-sm btn-download-source-button dropdown-item" title="Download source file"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-file"></i>
+                              </span>
+                              <span class="btn__text-container">.md</span>
+                            </a>
+                          </li>
+
+
+
+
+                          <li>
+                            <button onclick="window.print()" class="btn btn-sm btn-download-pdf-button dropdown-item"
+                              title="Print to PDF" data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-file-pdf"></i>
+                              </span>
+                              <span class="btn__text-container">.pdf</span>
+                            </button>
+                          </li>
+
+                        </ul>
+                      </div>
+
+
+
+
+                      <button onclick="toggleFullScreen()" class="btn btn-sm btn-fullscreen-button"
+                        title="Fullscreen mode" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+
+                        <span class="btn__icon-container">
+                          <i class="fas fa-expand"></i>
+                        </span>
+
+                      </button>
+
+
+
+                      <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only"
+                        aria-label="Color mode" data-bs-title="Color mode" data-bs-placement="bottom"
+                        data-bs-toggle="tooltip">
+                        <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light"
+                          title="Light"></i>
+                        <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark" title="Dark"></i>
+                        <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"
+                          title="System Settings"></i>
+                      </button>
+
+
+                      <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only"
+                        title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+                        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                      </button>
+                      <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar"
+                        data-bs-placement="bottom" data-bs-toggle="tooltip">
+                        <span class="fa-solid fa-list"></span>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div id="jb-print-docs-body" class="onlyprint">
+              <h1>Post-processing</h1>
+              <!-- Table of contents -->
+              <div id="print-main-content">
+                <div id="jb-print-toc">
+
+                  <div>
+                    <h2> Contents </h2>
+                  </div>
+                  <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#probabilistic-graphical-models">Probabilistic graphical models</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#hidden-markov-models">Hidden Markov Models</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#dynamic-bayesian-networks">Dynamic Bayesian Networks</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#the-bar-pointer-model">The Bar Pointer Model</a>
+                        <ul class="nav section-nav flex-column">
+                          <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                              href="#hidden-states">Hidden states</a></li>
+                          <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                              href="#transition-model">Transition Model</a></li>
+                          <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                              href="#observation-model">Observation model</a></li>
+                          <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                              href="#inference">Inference</a></li>
+                        </ul>
+                      </li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#conditional-random-fields">Conditional Random Fields</a>
+                        <ul class="nav section-nav flex-column">
+                          <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                              href="#linear-chain-conditional-random-fields">Linear-chain Conditional Random Fields</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="searchbox"></div>
+            <article class="bd-article">
+
+              <section class="tex2jax_ignore mathjax_ignore" id="post-processing">
+                <span id="dnns-postprocessing"></span>
+                <h1>Post-processing<a class="headerlink" href="#post-processing" title="Link to this heading">#</a></h1>
+                <p>Ideally the output likelihood of a DNN would be a robust estimation of the positions of beats and
+                  downbeats, but in practice likelihoods are noisy, and just
+                  post-processing them using peak-picking or a simple threshold would not be enough to obtain a
+                  musically consistent sequence. To obtain a reasonable estimation of beat and
+                  downbeat positions, most methods use a Probabilistic Graphical Models (PGMs) as post-processing of a
+                  likelihood from a DNN, as they allow to easily and intuitively encode musical-consistency constrains
+                  at inference time.</p>
+                <figure class="align-center" id="postprocessing">
+                  <a class="reference internal image-reference"
+                    href="assets/ch3_going_deep/figs/postprocessing.gif"><img
+                      alt="Post-processing the likelihood from a DNN."
+                      src="assets/ch3_going_deep/figs/postprocessing.gif" style="width: 1200px;" /></a>
+                  <figcaption>
+                    <p><span class="caption-text">Post-processing the likelihood from a DNN.</span><a class="headerlink"
+                        href="#postprocessing" title="Link to this image">#</a></p>
+                  </figcaption>
+                </figure>
+                <section id="probabilistic-graphical-models">
+                  <h2>Probabilistic graphical models<a class="headerlink" href="#probabilistic-graphical-models"
+                      title="Link to this heading">#</a></h2>
+                  <p>PGMs are a set of probabilistic models that express conditional dependencies between random
+                    variables as a graph. This graph can be <em>directed</em>, carrying a
+                    causal interpretation, or <em>undirected</em>, where there are no causal influences represented (see
+                    Figure below). In directed graphs, the concept of <em>parent nodes</em> refers to nodes that precede
+                    topologically the others.</p>
+                  <figure class="align-default" id="graphs">
+                    <img alt="Example of a directed graph (left) and an undirected (right)."
+                      src="assets/ch3_going_deep/figs/direct_undirect_graph.png" />
+                    <figcaption>
+                      <p><span class="caption-text">Example of directed graph (left) and undirected graph
+                          (right).</span><a class="headerlink" href="#graphs" title="Link to this image">#</a></p>
+                    </figcaption>
+                  </figure>
+                  <p>In the context of classification problems, the objective is to assign classes to observed entities.
+                    Two approaches commonly used in the context of sequential data
+                    classification are <em>generative</em> and <em>discriminative</em> models. Generative models are
+                    concerned with modelling the joint probability <span
+                      class="math notranslate nohighlight">\(P(\textbf{x},\textbf{y})\)</span> given the input and
+                    output sequences
+                    <span class="math notranslate nohighlight">\(\textbf{x}\)</span> and <span
+                      class="math notranslate nohighlight">\(\textbf{y}\)</span>. They are generative in the sense that
+                    they describe how the output probabilistically generates the input, and the main advantage of this
+                    approach is that it is possible to
+                    generate samples from it (i.e. to generate synthetic data that can be useful in many applications).
+                    The main disadvantage of generative models is that to use them in classification tasks, where the
+                    ultimate goal is to obtain the
+                    sequence that maximizes <span
+                      class="math notranslate nohighlight">\(P(\textbf{y}|\textbf{x})\)</span> (the most probable output
+                    given the input), one needs to model the likelihood <span
+                      class="math notranslate nohighlight">\(P(\textbf{x}|\textbf{y})\)</span>. Modelling <span
+                      class="math notranslate nohighlight">\(P(\textbf{x}|\textbf{y})\)</span> can be very difficult
+                    when data
+                    involves very complex interrelations, but also simplifying them or ignoring such dependencies can
+                    impact the performance of the model <span id="id1">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id187"
+                        title="Charles Sutton and Andrew McCallum. An introduction to conditional random fields. Foundations and Trends® in Machine Learning, 4(4):267–373, 2012.">SM12</a>]</span>.
+                    In applications where generating data is not intended, it is more efficient to use
+                    <em>discriminative</em> models, which directly model the conditional probability between inputs and
+                    outputs <span class="math notranslate nohighlight">\(P(\textbf{y}|\textbf{x})\)</span>.
+                    The main advantage of these models is that relations that only involve <span
+                      class="math notranslate nohighlight">\(\textbf{x}\)</span> play no role in the modelling, usually
+                    leading to compact models with simpler structure than generative models.
+                  </p>
+                  <div class="admonition note">
+                    <p class="admonition-title">Note</p>
+                    <p>In the context of beat and downbeat tracking both types of models –generative and discriminative–
+                      have been used leading to similar results.</p>
+                  </div>
+                  <p>PGMs have been explored across different MIR tasks given their capacity to deal with structure in a
+                    flexible manner. In the following we introduce the main models exploited in the literature and their
+                    motivation, instantiating relevant works.</p>
+                </section>
+                <section id="hidden-markov-models">
+                  <span id="dnns-hmms"></span>
+                  <h2>Hidden Markov Models<a class="headerlink" href="#hidden-markov-models"
+                      title="Link to this heading">#</a></h2>
+                  <p>Hidden Markov models (HMMs) <span id="id2">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id147"
+                        title="Lawrence R Rabiner. A tutorial on hidden markov models and selected applications in speech recognition. Proceedings of the IEEE, 77(2):257–286, 1989.">Rab89</a>]</span>
+                    are the most common graphical models used for music processing <span id="id3">[<a
+                        class="reference internal" href="../ch6_resources/references.html#id212"
+                        title="Helene Papadopoulos and George Tzanetakis. Models for music analysis from a markov logic networks perspective. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 25(1):19–34, 2016.">PT16</a>]</span>,
+                    in particular in rhythm analysis <span id="id4">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id60"
+                        title="S. Durand, J. P. Bello, B. David, and G. Richard. Feature adapted convolutional neural networks for downbeat tracking. In IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP). 2016.">DBDR16</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id52"
+                        title="A. Srinivasamurthy, A. Holzapfel, A. T. Cemgil, and X. Serra. Particle filters for efficient meter tracking with dynamic bayesian networks. In 16th Int. Society for Music Information Retrieval Conf. (ISMIR). 2015. URL: http://hdl.handle.net/10230/34998.">SHCS15</a>]</span>
+                    and widely used
+                    in the context of speech analysis and sequential problems in general. HMMs are generative models, so
+                    they compute the joint probability <span
+                      class="math notranslate nohighlight">\(P(\textbf{x},\textbf{y})\)</span> between a sequence of
+                    <span class="math notranslate nohighlight">\(T\)</span> <em>hidden states</em> <span
+                      class="math notranslate nohighlight">\(\textbf{y}\)</span> and a sequence
+                    of <em>observations</em> <span class="math notranslate nohighlight">\(\textbf{x}\)</span>. A HMM
+                    makes two important independence assumptions:
+                  </p>
+                  <ol class="arabic simple">
+                    <li>
+                      <p>each observation <span class="math notranslate nohighlight">\(x_t\)</span> depends only on the
+                        current state <span class="math notranslate nohighlight">\(y_t\)</span>,</p>
+                    </li>
+                    <li>
+                      <p>each state <span class="math notranslate nohighlight">\(y_t\)</span> depends only on its
+                        immediate predecessor <span class="math notranslate nohighlight">\(y_{t-1}\)</span>, which is
+                        called the Markovian assumption.</p>
+                    </li>
+                  </ol>
+                  <p>The joint probability of the state sequence <span
+                      class="math notranslate nohighlight">\(\textbf{y}\)</span> and the observation sequence <span
+                      class="math notranslate nohighlight">\(\textbf{x}\)</span> in an HMM factorizes as a product of
+                    conditional probabilities, given by the parent node in the direct graph as:</p>
+                  <div class="math notranslate nohighlight">
+                    \[
+                    P(\mathbf{y},\mathbf{x}) = P(y_1)\prod _{t=2} ^T P(y_t|y_{t-1})P(x_t|y_t),
+                    \]</div>
+                  <p>where <span class="math notranslate nohighlight">\(P(y_t|y_{t-1})\)</span> is the <em>transition
+                      probability</em>, <span class="math notranslate nohighlight">\(P(x_t|y_t)\)</span> is the
+                    <em>observation probability</em>, and <span class="math notranslate nohighlight">\(P(y_1)\)</span>
+                    is the distribution over initial states.
+                  </p>
+                  <p>Rhythm analysis problems such as beat or downbeat tracking can be seen as sequence labelling
+                    problems, so that given a sequence of observations, the objective is to assign a pre-defined class
+                    to each one of these events. In the context of HMMs, this translates to finding the maximum
+                    likelihood sequence <span class="math notranslate nohighlight">\(\textbf{x}^*\)</span> that
+                    maximizes <span class="math notranslate nohighlight">\(P(\textbf{x}|\textbf{y})\)</span>, that is:
+                  </p>
+                  <div class="math notranslate nohighlight">
+                    \[
+                    \textbf{x}^* = \mbox{arg}\: \mbox{max}_{x}P(\textbf{x}|\textbf{y})
+                    \]</div>
+                  <p>The most common algorithm used to solve this is the <em>Viterbi</em> algorithm <span id="id5">[<a
+                        class="reference internal" href="../ch6_resources/references.html#id147"
+                        title="Lawrence R Rabiner. A tutorial on hidden markov models and selected applications in speech recognition. Proceedings of the IEEE, 77(2):257–286, 1989.">Rab89</a>]</span>.
+                  </p>
+                </section>
+                <section id="dynamic-bayesian-networks">
+                  <span id="dnns-dbns"></span>
+                  <h2>Dynamic Bayesian Networks<a class="headerlink" href="#dynamic-bayesian-networks"
+                      title="Link to this heading">#</a></h2>
+                  <p>Dynamic Bayesian Networks (DBNs) <span id="id6">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id155">MR02</a>]</span> are a generalization of HMMs.
+                    DBNs are Bayesian Networks that relate variables to each other over adjacent time steps.
+                    Like HMMs, they represent a set of random variables and their conditional dependencies with a
+                    directed acyclic graph, but they are more general than HMMs
+                    since they allow one to model multiple hidden states. Given the hidden and observed sequences of
+                    variables <span class="math notranslate nohighlight">\(\textbf{y}\)</span> and <span
+                      class="math notranslate nohighlight">\(\textbf{x}\)</span> of length <span
+                      class="math notranslate nohighlight">\(T\)</span>,
+                    the joint probability of the hidden and observed variables factorizes as:</p>
+                  <div class="math notranslate nohighlight">
+                    \[
+                    P(\textbf{y},\textbf{x})=P(\textbf{y}_1)\prod ^T _{t=2}P(\textbf{y}_t |
+                    \textbf{y}_{t-1})P(\textbf{x}_t | \textbf{y}_t),
+                    \]</div>
+                  <p>with <span class="math notranslate nohighlight">\(P(\textbf{y}_t | \textbf{y}_{t-1})\)</span>,
+                    <span class="math notranslate nohighlight">\(P(\textbf{x}_t | \textbf{y}_t)\)</span> and <span
+                      class="math notranslate nohighlight">\(P(\textbf{y}_1)\)</span> the transition probability,
+                    observation probability and initial states distribution
+                    as an HMM, but over a <em>set</em> of hidden variables. The initial state distribution is usually
+                    set to a uniform initialization in practice.
+                  </p>
+                  <p>DBNs provide an effective framework to represent hierarchical relations in sequential data, as it
+                    is the case of musical rhythm. Probably the most successful example is the <em>bar pointer
+                      model</em> (BPM)
+                    <span id="id7">[<a class="reference internal" href="../ch6_resources/references.html#id55"
+                        title="N. Whiteley, A. T. Cemgil, and S. J. Godsill. Bayesian modelling of temporal structure in musical audio. In 7th Int. Society for Music Information Retrieval Conf. (ISMIR). Citeseer, 2006.">WCG06</a>]</span>,
+                    which has been proposed by Whiteley et al. for the task of meter analysis and has been further
+                    extended in recent years <span id="id8">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id33"
+                        title="A. Holzapfel, F. Krebs, and A. Srinivasamurthy. Tracking the 'odd': meter inference in a culturally diverse music corpus. In 15th Int. Society for Music Information Retrieval Conf. (ISMIR), 425-430. Taipei, Taiwan, October 2014.">HKS14</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id12"
+                        title="F. Krebs, S. Böck, M. Dorfer, and G. Widmer. Downbeat tracking using beat synchronous features with recurrent neural networks. In 17th International Society for Music Information Retrieval Conference (ISMIR). 2016.">KBockDW16</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id191"
+                        title="Florian Krebs, Sebastian Böck, and Gerhard Widmer. Rhythmic pattern modeling for beat and downbeat tracking in musical audio. In ISMIR, 227–232. 2013.">KBockW13</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id52"
+                        title="A. Srinivasamurthy, A. Holzapfel, A. T. Cemgil, and X. Serra. Particle filters for efficient meter tracking with dynamic bayesian networks. In 16th Int. Society for Music Information Retrieval Conf. (ISMIR). 2015. URL: http://hdl.handle.net/10230/34998.">SHCS15</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id47"
+                        title="A. Srinivasamurthy, A. Holzapfel, A. T. Cemgil, and X. Serra. A generalized bayesian model for tracking long metrical cycles in acoustic music signals. In IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP), 76-80. Shanghai, China, March 2016.">SHCS16</a>]</span>.
+                    A short overview of it and one of its relevant variants is presented in the following.
+                    Given that there are multiple versions of this model, we chose the variant presented in <span
+                      id="id9">[<a class="reference internal" href="../ch6_resources/references.html#id52"
+                        title="A. Srinivasamurthy, A. Holzapfel, A. T. Cemgil, and X. Serra. Particle filters for efficient meter tracking with dynamic bayesian networks. In 16th Int. Society for Music Information Retrieval Conf. (ISMIR). 2015. URL: http://hdl.handle.net/10230/34998.">SHCS15</a>]</span>
+                    for this explanation.
+                  </p>
+                </section>
+                <section id="the-bar-pointer-model">
+                  <span id="dnns-bpm"></span>
+                  <h2>The Bar Pointer Model<a class="headerlink" href="#the-bar-pointer-model"
+                      title="Link to this heading">#</a></h2>
+                  <figure class="align-default" id="bpm">
+                    <a class="reference internal image-reference" href="assets/ch3_going_deep/figs/bpm.png"><img
+                        alt="BPM modeol." src="assets/ch3_going_deep/figs/bpm.png" style="width: 300px;" /></a>
+                    <figcaption>
+                      <p><span class="caption-text">Bar Pointer Model as it appears in <span id="id10">[<a
+                              class="reference internal" href="../ch6_resources/references.html#id52"
+                              title="A. Srinivasamurthy, A. Holzapfel, A. T. Cemgil, and X. Serra. Particle filters for efficient meter tracking with dynamic bayesian networks. In 16th Int. Society for Music Information Retrieval Conf. (ISMIR). 2015. URL: http://hdl.handle.net/10230/34998.">SHCS15</a>]</span>.
+                          Double circles denote continuous variables, and simple circles denote discrete variables. The
+                          gray nodes are observed, and the white nodes represent hidden variables.</span><a
+                          class="headerlink" href="#bpm" title="Link to this image">#</a></p>
+                    </figcaption>
+                  </figure>
+                  <p>The BPM describes the dynamics of a hypothetical pointer that indicates the position within a bar,
+                    and progresses at the speed of the tempo of the piece, until the end of the bar
+                    where it resets its value to track the next bar. A key assumption in this model is that there is an
+                    underlying bar-length rhythmic pattern that depends on the style of the music piece,
+                    which is used to track the position of the pointer.</p>
+                  <p>The effectiveness of this model relies on its flexibility, since it accounts for different metrical
+                    structures, tempos and rhythmic patterns, allowing its application in different music
+                    genres ranging from Indian music to Ballroom dances <span id="id11">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id33"
+                        title="A. Holzapfel, F. Krebs, and A. Srinivasamurthy. Tracking the 'odd': meter inference in a culturally diverse music corpus. In 15th Int. Society for Music Information Retrieval Conf. (ISMIR), 425-430. Taipei, Taiwan, October 2014.">HKS14</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id47"
+                        title="A. Srinivasamurthy, A. Holzapfel, A. T. Cemgil, and X. Serra. A generalized bayesian model for tracking long metrical cycles in acoustic music signals. In IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP), 76-80. Shanghai, China, March 2016.">SHCS16</a>]</span>.
+                  </p>
+                  <section id="hidden-states">
+                    <h3>Hidden states<a class="headerlink" href="#hidden-states" title="Link to this heading">#</a></h3>
+                    <p>The hidden state <span class="math notranslate nohighlight">\(\textbf{y}_t\)</span> represents
+                      the position of the hypothetical pointer at each time frame <span
+                        class="math notranslate nohighlight">\(t\)</span>, and is given by <span
+                        class="math notranslate nohighlight">\(\textbf{y}_t=[\phi_t\:\: \dot{\phi}_t \:\: r_t]\)</span>,
+                      where each variable describes the position inside the bar, the instantaneous tempo, and the
+                      rhythmic pattern respectively.</p>
+                    <ul class="simple">
+                      <li>
+                        <p><span class="math notranslate nohighlight">\(r_t \in {r_1 \ldots r_R}\)</span> is a rhythmic
+                          pattern indicator that can be used to differentiate between <span
+                            class="math notranslate nohighlight">\(R\)</span> different rhythmic patterns, which can be
+                          known <em>a priori</em> or learned.</p>
+                      </li>
+                      <li>
+                        <p>The variable <span class="math notranslate nohighlight">\(\phi _t \in [0,M_{r_t})\)</span> is
+                          the current position in a bar, and <span
+                            class="math notranslate nohighlight">\(M_{r_t}\)</span> is the length of a bar related to
+                          the considered rhythmic patterns. Different rhythmic patterns associated to different time
+                          signatures or meter cycles will have different number of discrete positions. Common practice
+                          is to fix the length of one time signature or meter cycle and scale the rest accordingly.</p>
+                      </li>
+                      <li>
+                        <p><span class="math notranslate nohighlight">\(\dot{\phi}_t \in
+                            [\dot{\phi}_{min},\:\dot{\phi}_{max}]\)</span> is the instantaneous tempo (denoting the rate
+                          at which the bar pointer traverses a bar). <span
+                            class="math notranslate nohighlight">\(\dot{\phi}_t\)</span> is given by the number of bar
+                          positions per frame. The tempo limits are assumed to depend on the rhythmic pattern state.</p>
+                      </li>
+                    </ul>
+                  </section>
+                  <section id="transition-model">
+                    <h3>Transition Model<a class="headerlink" href="#transition-model"
+                        title="Link to this heading">#</a></h3>
+                    <p>Due to the conditional independence relations shown in Figure \ref{fig:bpm}, the transition model
+                      factorizes as:
+                      $<span class="math notranslate nohighlight">\(
+                        P(\textbf{y}_t | \textbf{y}_{t-1})=P(\phi_t | \phi_{t-1},\dot{\phi}_{t-1},r_{t-1})\times
+                        P(\dot{\phi}_t | \dot{\phi}_{t-1})\times P(r_t | r_{t-1}, \phi_{t-1}, \phi_t),
+                        \)</span>$
+                      where the three factors are defined as:</p>
+                    <ul class="simple">
+                      <li>
+                        <p><span class="math notranslate nohighlight">\(P(\phi _t | \phi
+                            _{t-1},\dot{\phi}_{t-1},r_{t-1})=1_\phi\)</span>, where <span
+                            class="math notranslate nohighlight">\(1_\phi\)</span> is an indicator function that equals
+                          one if <span class="math notranslate nohighlight">\(\phi _t=(\phi _{t-1}+\dot{\phi}_{t-1})\:
+                            \mbox{mod} \: M_{r_t}\)</span> and <span class="math notranslate nohighlight">\(0\)</span>
+                          otherwise.</p>
+                      </li>
+                      <li>
+                        <p>The tempo transition from one frame to the next is assumed to follow a normal distribution
+                          and is given by: <span class="math notranslate nohighlight">\(P(\dot{\phi}_t
+                            |\dot{\phi}_{t-1})\propto \mathcal{N}(\dot{\phi} _{t-1},
+                            \sigma ^2 _{\dot{\phi}})\times 1_{\dot{\phi}}\)</span>, where <span
+                            class="math notranslate nohighlight">\(\sigma _{\dot{\phi}}\)</span> is the standard
+                          deviation of the tempo transition model and <span
+                            class="math notranslate nohighlight">\(1_{\dot{\phi}}\)</span> is an indicator function that
+                          equals one if <span class="math notranslate nohighlight">\(\dot{\phi_t} \in [\dot{\phi_{min}},
+                            \dot{\phi_{max}}]\)</span>, and <span class="math notranslate nohighlight">\(0\)</span>
+                          otherwise.</p>
+                      </li>
+                      <li>
+                        <p><span class="math notranslate nohighlight">\(P(r_t | r_{t-1},\phi_{t-1}, \phi_t)= \left\{
+                            \begin{array}{&#64;{} l l &#64;{}}
+                            \mathcal{A}(r_t, r_{t-1}) &amp; \hspace{-0.2cm}\mbox{if}\: \phi_t &lt; \phi_{t-1},\\
+                            1_r &amp; \hspace{-0.15cm} \mbox{otherwise},
+                            \end{array}\right .\)</span>,
+                          where <span class="math notranslate nohighlight">\(\mathcal{A}(i,j)\)</span> is the transition
+                          probability from <span class="math notranslate nohighlight">\(r_i\)</span> to <span
+                            class="math notranslate nohighlight">\(r_j\)</span>, and <span
+                            class="math notranslate nohighlight">\(1_r\)</span> is an indicator function that equals one
+                          when <span class="math notranslate nohighlight">\(r_t=r_{t-1}\)</span> and <span
+                            class="math notranslate nohighlight">\(0\)</span> otherwise.</p>
+                      </li>
+                    </ul>
+                    <figure class="align-default" id="id12">
+                      <a class="reference internal image-reference" href="assets/ch3_going_deep/figs/bpm_123.png"><img
+                          alt="BPM." src="assets/ch3_going_deep/figs/bpm_123.png" style="width: 300px;" /></a>
+                      <figcaption>
+                        <p><span class="caption-text">Transitions between states are cyclic in the BPM.</span><a
+                            class="headerlink" href="#id12" title="Link to this image">#</a></p>
+                      </figcaption>
+                    </figure>
+                  </section>
+                  <section id="observation-model">
+                    <h3>Observation model<a class="headerlink" href="#observation-model"
+                        title="Link to this heading">#</a></h3>
+                    <p>The observation model <span
+                        class="math notranslate nohighlight">\(P(\textbf{x}_t|\textbf{y}_t)=P(\textbf{x}_t| \phi_t,
+                        r_t)\)</span> proposed in <span id="id13">[<a class="reference internal"
+                          href="../ch6_resources/references.html#id52"
+                          title="A. Srinivasamurthy, A. Holzapfel, A. T. Cemgil, and X. Serra. Particle filters for efficient meter tracking with dynamic bayesian networks. In 16th Int. Society for Music Information Retrieval Conf. (ISMIR). 2015. URL: http://hdl.handle.net/10230/34998.">SHCS15</a>]</span>
+                      is given by learned features using GMMs with two components.
+                      Among the variations of the BPM, other observation models have been proposed using RNNs <span
+                        id="id14">[<a class="reference internal" href="../ch6_resources/references.html#id214"
+                          title="S. Böck, F. Krebs, and G. Widmer. Joint beat and downbeat tracking with recurrent neural networks. In 17th International Society for Music Information Retrieval Conference (ISMIR). 2016.">BockKW16</a>,
+                        <a class="reference internal" href="../ch6_resources/references.html#id19"
+                          title="F. Krebs, S. Böck, and G. Widmer. An efficient state space model for joint tempo and meter tracking. In 16th International Society for Music Information Retrieval Conference (ISMIR). 2011.">KBockW11</a>]</span>.
+                    </p>
+                  </section>
+                  <section id="inference">
+                    <h3>Inference<a class="headerlink" href="#inference" title="Link to this heading">#</a></h3>
+                    <p>The inference of a model with continuous variables is usually done approximately, where
+                      <em>sequential Monte Carlo (SMC)</em> algorithms have been explored
+                      in the context of rhythm analysis <span id="id15">[<a class="reference internal"
+                          href="../ch6_resources/references.html#id204"
+                          title="Florian Krebs, Andre Holzapfel, Ali Taylan Cemgil, and Gerhard Widmer. Inferring metrical structure in music using particle filters. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 23(5):817–827, 2015.">KHCW15</a>,
+                        <a class="reference internal" href="../ch6_resources/references.html#id52"
+                          title="A. Srinivasamurthy, A. Holzapfel, A. T. Cemgil, and X. Serra. Particle filters for efficient meter tracking with dynamic bayesian networks. In 16th Int. Society for Music Information Retrieval Conf. (ISMIR). 2015. URL: http://hdl.handle.net/10230/34998.">SHCS15</a>]</span>.
+                      It is also common to discretize the variables <span
+                        class="math notranslate nohighlight">\(\dot{\phi}_t\)</span> and <span
+                        class="math notranslate nohighlight">\(\phi_t\)</span>, and then perform the inference using
+                      Viterbi.
+                    </p>
+                  </section>
+                </section>
+                <section id="conditional-random-fields">
+                  <span id="dnns-crfs"></span>
+                  <h2>Conditional Random Fields<a class="headerlink" href="#conditional-random-fields"
+                      title="Link to this heading">#</a></h2>
+                  <p>Conditional Random Fields (CRFs) are a particular case of undirected PGMs. Unlike generative models
+                    such as HMMs, which model the joint probability of the input and output <span
+                      class="math notranslate nohighlight">\(P(\textbf{x},\textbf{y})\)</span>, CRFs model the
+                    conditional probability
+                    of the output given the input <span
+                      class="math notranslate nohighlight">\(P(\textbf{y}|\textbf{x})\)</span>. CRFs can be defined in
+                    any undirected graph, making them suitable to diverse problems where structured prediction is needed
+                    across various fields, including text processing
+                    <span id="id16">[<a class="reference internal" href="../ch6_resources/references.html#id163"
+                        title="Burr Settles. Abner: an open source tool for automatically tagging genes, proteins and other entity names in text. Bioinformatics, 21(14):3191–3192, 2005.">Set05</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id157"
+                        title="Fei Sha and Fernando Pereira. Shallow parsing with conditional random fields. In Proceedings of the 2003 Conference of the North American Chapter of the Association for Computational Linguistics on Human Language Technology-Volume 1, 134–141. Association for Computational Linguistics, 2003.">SP03</a>]</span>,
+                    computer vision <span id="id17">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id159"
+                        title="Xuming He, Richard S Zemel, and Miguel Á Carreira-Perpiñán. Multiscale conditional random fields for image labeling. In Proceedings of the 2004 IEEE Computer Society Conference on Computer Vision and Pattern Recognition, 2004. CVPR 2004., volume 2, II–II. IEEE, 2004.">HZCPerpinan04</a>,
+                      <a class="reference internal" href="../ch6_resources/references.html#id162"
+                        title="Sanjiv Kumar and Martial Hebert. Discriminative fields for modeling spatial dependencies in natural images. In Advances in neural information processing systems, 1531–1538. 2004.">KH04</a>]</span>
+                    and combined applications of NLP and computer vision <span id="id18">[<a class="reference internal"
+                        href="../ch6_resources/references.html#id223"
+                        title="Chen Zhu, Yanpeng Zhao, Shuaiyi Huang, Kewei Tu, and Yi Ma. Structured attentions for visual question answering. In Proceedings of the IEEE International Conference on Computer Vision, 1291–1300. 2017.">ZZH+17</a>]</span>.
+                  </p>
+                  <p>Beat and downbeat tracking are sequential problems, i.e. the variables involved have a strong
+                    dependency over time. Equations below present a generic CRF model for sequential problems,
+                    where <span class="math notranslate nohighlight">\(\Psi _k\)</span> are called <em>potentials</em>,
+                    which act in a similar way to transition and observation matrices in HMMs and DBNs, expressing
+                    relations between <span class="math notranslate nohighlight">\(\textbf{x}\)</span> and <span
+                      class="math notranslate nohighlight">\(\textbf{y}\)</span>. <span
+                      class="math notranslate nohighlight">\(k\)</span> is a feature index, that
+                    exploits a particular relation between input and output. The term <span
+                      class="math notranslate nohighlight">\(Z(\textbf{x})\)</span>, called the <em>partition
+                      function</em>, acts as a normalization term to ensure that the expression
+                    is a properly defined probability.</p>
+                  <div class="math notranslate nohighlight">
+                    \[
+                    P(\textbf{y}|\textbf{x}) = \frac{1}{Z(\textbf{x})} \prod _{t=1} ^T \prod_{k=1} ^K
+                    \Psi_k(\textbf{x},\textbf{y},t)
+                    \]</div>
+                  <div class="math notranslate nohighlight">
+                    \[
+                    Z(\textbf{x}) = \sum_y \prod_{t=1} ^T \prod_{k=1} ^K \Psi_k(\textbf{x},\textbf{y},t)
+                    \]</div>
+                  <section id="linear-chain-conditional-random-fields">
+                    <h3>Linear-chain Conditional Random Fields<a class="headerlink"
+                        href="#linear-chain-conditional-random-fields" title="Link to this heading">#</a></h3>
+                    <p>Linear-chain CRFs (LCCRFs) restrict the CRF model to a Markov chain, that is, the output variable
+                      at time <span class="math notranslate nohighlight">\(t\)</span> depends only on the previous
+                      output variable at time <span class="math notranslate nohighlight">\(t-1\)</span>. Another
+                      common constraint usually imposed in LCCRFs is to restrict the dependence on the current input
+                      <span class="math notranslate nohighlight">\(x_t\)</span> instead of the whole input sequence
+                      <span class="math notranslate nohighlight">\(\textbf{x}\)</span>, resulting in the following
+                      model:
+                    </p>
+                    <div class="math notranslate nohighlight">
+                      \[
+                      P(\textbf{y}|\textbf{x}) = \frac{1}{Z(\textbf{x})} \Phi(x_1,y_1) \prod _{t=1} ^T \Psi(y_{t-1},y_t)
+                      \Phi(x_t,y_t).
+                      \]</div>
+                    <p>These simplifications, which make the LCCRF model very similar to the HMMS and DBNs, are often
+                      adopted in practice for complexity reasons <span id="id19">[<a class="reference internal"
+                          href="../ch6_resources/references.html#id187"
+                          title="Charles Sutton and Andrew McCallum. An introduction to conditional random fields. Foundations and Trends® in Machine Learning, 4(4):267–373, 2012.">SM12</a>]</span>,
+                      though there exist some exceptions
+                      <span id="id20">[<a class="reference internal" href="../ch6_resources/references.html#id29"
+                          title="T. Fillon, C. Joder, S. Durand, and S. Essid. A conditional random field system for beat tracking. In IEEE Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP), 424-428. South Brisbane, Australia, April 2015.">FJDE15</a>]</span>.
+                      The potentials <span class="math notranslate nohighlight">\(\Psi_k\)</span> become simply <span
+                        class="math notranslate nohighlight">\(\Psi\)</span> and <span
+                        class="math notranslate nohighlight">\(\Phi\)</span>, which are the <em>transition</em> and
+                      <em>observation</em> potentials respectively.
+                      The transition potential models interactions between consecutive output labels, whereas the
+                      observation potential establishes the relation between the input <span
+                        class="math notranslate nohighlight">\(x_t\)</span> and the output <span
+                        class="math notranslate nohighlight">\(y_t\)</span>. Note that potentials in CRF models do
+                      not need to be proper probabilities, given the normalization term <span
+                        class="math notranslate nohighlight">\(Z(\textbf{x})\)</span>. The inference in LCCRFs is done
+                      to find the most probable sequence <span
+                        class="math notranslate nohighlight">\(\textbf{y}^*\)</span> so:
+                    </p>
+                    <div class="math notranslate nohighlight">
+                      \[
+                      \textbf{y}^* = \mbox{arg}\: \mbox{max}_{y}P(\textbf{y}|\textbf{x}),
+                      \]</div>
+                    <p>and it is usually computed using the Viterbi algorithm, as in the case of HMMs <span
+                        id="id21">[<a class="reference internal" href="../ch6_resources/references.html#id48"
+                          title="C. Sutton and A. McCallum. An introduction to conditional random fields for relational learning. In Lise Getoor and Ben Taskar, editors, Introduction to Statistical Relational Learning, chapter 4, pages 93-128. MIT Press, Cambridge, USA, 2006.">SM06</a>]</span>.
+                    </p>
+                  </section>
+                </section>
+              </section>
+
+              <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ch3_going_deep"
+        },
+        predefinedOutput: true
+    }
+    </script>
+              <script>kernelName = 'python3'</script>
+
+            </article>
+
+
+
+
+
+
+            <footer class="prev-next-footer d-print-none">
+
+              <div class="prev-next-area">
+              </div>
+            </footer>
+
+          </div>
+
+
+
+          <dialog id="pst-secondary-sidebar-modal"></dialog>
+          <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc">
+            <div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+              <div class="sidebar-secondary-item">
+                <div class="page-toc tocsection onthispage">
+                  <i class="fa-solid fa-list"></i> Contents
+                </div>
+                <nav class="bd-toc-nav page-toc">
+                  <ul class="visible nav section-nav flex-column">
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#probabilistic-graphical-models">Probabilistic graphical models</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#hidden-markov-models">Hidden Markov Models</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#dynamic-bayesian-networks">Dynamic Bayesian Networks</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#the-bar-pointer-model">The Bar Pointer Model</a>
+                      <ul class="nav section-nav flex-column">
+                        <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                            href="#hidden-states">Hidden states</a></li>
+                        <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                            href="#transition-model">Transition Model</a></li>
+                        <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                            href="#observation-model">Observation model</a></li>
+                        <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                            href="#inference">Inference</a></li>
+                      </ul>
+                    </li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#conditional-random-fields">Conditional Random Fields</a>
+                      <ul class="nav section-nav flex-column">
+                        <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link"
+                            href="#linear-chain-conditional-random-fields">Linear-chain Conditional Random Fields</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+        <footer class="bd-footer-content">
+
+          <div class="bd-footer-content__inner container">
+
+            <div class="footer-item">
+
+              <p class="component-author">
+                By Matthew E. P. Davies, Sebastian Bock, Magdalena Fuentes
+              </p>
+
+            </div>
+
+            <div class="footer-item">
+
+
+              <p class="copyright">
+
+                © Copyright 2024.
+                <br />
+
+              </p>
+
+            </div>
+
+            <div class="footer-item">
+
+            </div>
+
+            <div class="footer-item">
+
+            </div>
+
+          </div>
+        </footer>
+
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+</body>
+
+</html>
