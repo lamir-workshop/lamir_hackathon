@@ -199,5 +199,8 @@ pip install wandb
         ```
         Then, pass the callback to the trainer.
 
+```{tip}
+Avoid storing your model checkpoints into Weights & Biases since you only have 100Gb of free space. By logging the entire model checkpoints, you can quickly exhaust your storage quota. Instead, consider logging only essential metrics, model summaries, or lightweight artifacts to avoid filling up the available space.
+```  
 
 The PyTorch Lightning integration with W&B allows for even more automation. Metrics will automatically be logged, and the training process will be visualized in the W&B dashboard.
