@@ -1,7 +1,7 @@
 About the Authors
 =================
 
-[**Richa Namballa**]() is a researcher in the Centre for Informatics and Systems of 
+[**Richa Namballa**](https://richa-namballa.github.io) is a researcher in the Centre for Informatics and Systems of 
 the University of Coimbra (CISUC). His research interests include the analysis of rhythm 
 in musical audio signals, evaluation methodology, creative music applications, and 
 reproducible research. He has published over 70 refereed conference and journal 
@@ -12,7 +12,7 @@ INESC TEC, and was an Invited Assistant Professor in the University of Porto.
 
 <!-- <a href="https://mepdavies.github.io" target="_blank">website</a> -->
 
-[**Giovana Morais**]() is a researcher in the Centre for Informatics and Systems of 
+[**Giovana Morais**](https://steinhardt.nyu.edu/people/giovana-morais) is a researcher in the Centre for Informatics and Systems of 
 the University of Coimbra (CISUC). His research interests include the analysis of rhythm 
 in musical audio signals, evaluation methodology, creative music applications, and 
 reproducible research. He has published over 70 refereed conference and journal 
