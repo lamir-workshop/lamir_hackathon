@@ -1,4 +1,4 @@
-LAMIR Hackathon 2024
+LAMIR 2024 Hackathon
 ====================================================
 
 **By Matthew E. P. Davies, Sebastian Böck, Magdalena Fuentes**
@@ -12,7 +12,7 @@ alt: Placeholder image to illustrate what are we talking about.
 Welcome message
 ---------------
 
-Welcome to the website for the ISMIR 2021 tutorial on Tempo, Beat, and Downbeat Estimation.
+Welcome to the website for the LAMIR 2024 Hackathon tutorial on Tempo, Beat, and Downbeat Estimation.
 
 The highly interrelated topics of tempo, beat, and downbeat estimation from musical 
 audio signals have spanned the entire history of MIR. Along with many MIR topics, the 
@@ -26,7 +26,7 @@ analysis pipeline, but also to emphasize the importance of technical and musical
 choices, the reliability of annotated data, and multidisciplinarity. In addition, we 
 seek to provide insight into common pitfalls and discuss future challenges.
 
-The tutorial is targeted towards those in the ISMIR community who wish gain 
+The tutorial is targeted towards those in the LAMIR community who wish gain 
 comprehensive insight and practical experience in tempo, beat, and downbeat estimation 
 of musical audio signals. For those new to this area, we seek to provide a hands-on 
 technical and pedagogical guide which can serve as the basis for fostering future 
@@ -50,10 +50,21 @@ in the following Google Colab notebook:**
 Desired outcomes
 ----------------
 
-The content of the ISMIR 2021 tutorial has been organised in the form of an online 
-book which we hope will remain a useful resource for the ISMIR community beyond
-the ISMIR 2021 conference. By participating in the tutorial directly, or following
+The content of the LAMIR 2024 Hackathon has been organised in the form of an online 
+book which we hope will remain a useful resource for the LAMIR community beyond
+the LAMIR 2024 conference. By participating in the Hackathon directly, or following
 the material offline, we strive for everyone to come away with the following:
+
+* A high-level understanding of adapting deep learning models for music tasks in culturally diverse settings, focusing on meter tacking and source separation for Latin American music genres.
+* Insights into the challenges and opportunities of applying MIR techniques to non-Western music, highlighting the importance of adapting models with minimal data.
+* Knowledge of practical strategies like transfer learning, data augmentation, and fine-tuning, and their impact on model adaptability and performance.
+* Familiarity with using existing datasets to address specific MIR tasks in music traditions that are often overlooked by mainstream research.
+
+Through hands-on coding sessions, participants will get practical experience with:
+* Loading and processing datasets that include rhythmic instruments from Latin American traditions.
+* Generating artificial mixtures from solo tracks and using these mixtures for training models.
+* Adapting beat and downbeat tracking models using small annotated datasets and evaluating the models' performance.
+* Exploring the capabilities of different model configurations, including deep learning-based TCNs and simpler statistical models, for musical analysis.
 
 * A high-level understanding of the tasks of tempo, beat, and downbeat estimation as
 demonstrated through diverse sound examples.
@@ -86,7 +97,7 @@ How to reference this book
 	Month = Nov.,
 	Publisher = {https://tempobeatdownbeat.github.io/tutorial/intro.html},
 	Title = {{Tempo, Beat and Downbeat Estimation}},
-	Year = 2021,
+	Year = 2024,
 	Url = {https://tempobeatdownbeat.github.io/tutorial/intro.html}
 }
 ``` 
