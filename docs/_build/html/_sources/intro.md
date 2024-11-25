@@ -60,25 +60,11 @@ the material offline, we strive for everyone to come away with the following:
 * Knowledge of practical strategies like transfer learning, data augmentation, and fine-tuning, and their impact on model adaptability and performance.
 * Familiarity with using existing datasets to address specific MIR tasks in music traditions that are often overlooked by mainstream research.
 
-Through hands-on coding sessions, participants will get practical experience with:
+Via hands-on coding examples in python, we intend to provide practical experience in:
 * Loading and processing datasets that include rhythmic instruments from Latin American traditions.
 * Generating artificial mixtures from solo tracks and using these mixtures for training models.
 * Adapting beat and downbeat tracking models using small annotated datasets and evaluating the models' performance.
 * Exploring the capabilities of different model configurations, including deep learning-based TCNs and simpler statistical models, for musical analysis.
-
-* A high-level understanding of the tasks of tempo, beat, and downbeat estimation as
-demonstrated through diverse sound examples.
-* Insight into the historical (i.e. pre deep learning) approaches to these tasks.
-* Knowledge of evaluation methods and how these can be interpreted to better understand algorithm performance and limitations.
-* A theoretical grasp of state of recent state of the art deep learning approaches applied to these tasks.
-* The importance of design decisions when formulating deep learning approaches.
-* Awareness of open issues and interesting future directions. 
-
-Via hands-on coding examples in python, we intend to provide practical experience in:
-* Loading an existing dataset with ground truth annotations.
-* Pre-processing the dataset, as well as creating training, validation, and testing splits. 
-* Training a multi-task model which can simultaneously estimate tempo, beat, and downbeat.
-* Performing inference on the predictions of the trained models.
 
 
 ## Contributions from the community
