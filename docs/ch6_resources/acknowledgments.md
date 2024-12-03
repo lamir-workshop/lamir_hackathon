@@ -3,11 +3,7 @@
 
 (ackmap:help)=
 ## Inspiration
-From an aesthetic and structural point of view this online book
-owes a huge debt of gratitude to the amazing example set by the ISMIR 2020
-tutorial on [`Open Source Tools & Data for Music Source Separation`](https://source-separation.github.io/tutorial/landing.html)
-
-So special thanks Ethan, Prem, and Justin!
+This book is largely inspired on the ISMIR tutorial on [`Tempo, Beat and Downbeat Tracking`](https://tempobeatdownbeat.github.io/tutorial/intro.html), both from an aesthetic and structural point of view.
 
 (ackmap:tools)=
 ## Existing tools
@@ -21,7 +17,7 @@ and those specific to the computational analysis of musical rhythm.
 
 (ackmap:funding)=
 ## Funding 
-This work is funded by the Google through the Award for Inclusion Research Program. The LAMIR workshop is possible due to the generous support of our sponsors: the ISMIR board, Khipux, CAPES, Google and Music.AI.
+This work is funded by the Google through the Award for Inclusion Research Program. The LAMIR workshop is possible due to the generous support of our sponsors: the ISMIR board, Khipux, CAPES, Google and MusicAI.
 
 ![](../assets/sponsors/capes.png)
 ![](../assets/sponsors/google.png)

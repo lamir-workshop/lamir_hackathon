@@ -18,3 +18,13 @@ In the context of beat tracking, low-data approaches seem to be most effective i
 3. **Limited Annotation Resources**: Only a few minutes of annotated audio are available, which is common in underrepresented or culturally-specific music genres.
 
 For example, Samba and Candombe demonstrate rhythmic regularities that make them suitable candidates for such adaptations. On top of that, Candombe has fixed instrumentation, making it even more homogenious. 
+
+---
+
+#### How do we do it? Fine-Tuning vs. Training from Scratch
+
+We explore to strategies to adapt beat tracking models with minimal data:
+
+1. **Training from Scratch (TCN-FS)**: Models trained exclusively on the small, annotated dataset of the target genre. This approach benefits from rhythmic homogeneity but can struggle with generalization if the dataset is too small.
+   
+2. **Fine-Tuning Pretrained Models (TCN-FT)**: Transfer learning is employed to adapt a model initially trained on diverse Western music datasets. By fine-tuning on the small target dataset, the model leverages its pre-existing knowledge while specializing in the new domain. This strategy has shown better performance and faster convergence compared to training from scratch.

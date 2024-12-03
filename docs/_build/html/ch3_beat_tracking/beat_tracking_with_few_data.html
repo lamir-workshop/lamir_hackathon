@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beat tracking with little data &#8212; LAMIR Hackathon</title>
+    <title>Takeaways &#8212; LAMIR Hackathon</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Beat tracking with little data" href="definition.html" />
-    <link rel="prev" title="Collab" href="../ch2_wandb/collab.html" />
+    <link rel="next" title="Hands on!" href="../ch4_source_separation/source_separation_with_few_data.html" />
+    <link rel="prev" title="Beat tracking with little data" href="definition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -109,6 +109,11 @@
    Motivation for Low Data Approaches
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch1_intro/music.html">
+   Samba and Candombe: Our Musical Traditions Case Studies
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -133,14 +138,14 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Beat tracking with little data
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="definition.html">
    Beat tracking with little data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Takeaways
   </a>
  </li>
 </ul>
@@ -277,11 +282,6 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fine-tuning-vs-training-from-scratch">
-   Fine-Tuning vs. Training from Scratch
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#results">
    Results
   </a>
@@ -314,17 +314,8 @@
         
               <div>
                 
-  <div class="section" id="beat-tracking-with-little-data">
-<h1>Beat tracking with little data<a class="headerlink" href="#beat-tracking-with-little-data" title="Permalink to this headline">¶</a></h1>
-<hr class="docutils" />
-<div class="section" id="fine-tuning-vs-training-from-scratch">
-<h2>Fine-Tuning vs. Training from Scratch<a class="headerlink" href="#fine-tuning-vs-training-from-scratch" title="Permalink to this headline">¶</a></h2>
-<p>Two primary strategies were explored to adapt beat tracking models with minimal data:</p>
-<ol class="simple">
-<li><p><strong>Training from Scratch (TCN-FS)</strong>: Models trained exclusively on the small, annotated dataset of the target genre. This approach benefits from rhythmic homogeneity but can struggle with generalization if the dataset is too small.</p></li>
-<li><p><strong>Fine-Tuning Pretrained Models (TCN-FT)</strong>: Transfer learning is employed to adapt a model initially trained on diverse Western music datasets. By fine-tuning on the small target dataset, the model leverages its pre-existing knowledge while specializing in the new domain. This strategy has shown better performance and faster convergence compared to training from scratch.</p></li>
-</ol>
-</div>
+  <div class="section" id="takeaways">
+<h1>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
 <div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
@@ -401,19 +392,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../ch2_wandb/collab.html" title="previous page">
+        <a class="left-prev" href="definition.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Collab</p>
+                <p class="prevnext-title">Beat tracking with little data</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="definition.html" title="next page">
+        <a class="right-next" href="../ch4_source_separation/source_separation_with_few_data.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Beat tracking with little data</p>
+                <p class="prevnext-title">Hands on!</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

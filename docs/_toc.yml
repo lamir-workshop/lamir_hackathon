@@ -8,6 +8,7 @@ parts:
     chapters:
     - file: ch1_intro/tutorial_structure
     - file: ch1_intro/few_data
+    - file: ch1_intro/music
 
   - caption: 'Setting up a deep learning project'
     chapters:
@@ -16,8 +17,8 @@ parts:
 
   - caption: 'Beat tracking with few data'
     chapters:
-    - file: ch3_beat_tracking/beat_tracking_with_few_data
     - file: ch3_beat_tracking/definition
+    - file: ch3_beat_tracking/beat_tracking_with_few_data
 
   - caption: 'Source separation with few data and artificial mixtures'
     chapters:
