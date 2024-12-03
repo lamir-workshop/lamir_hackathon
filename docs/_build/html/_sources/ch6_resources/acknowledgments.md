@@ -17,22 +17,14 @@ and those specific to the computational analysis of musical rhythm.
 
 * `mirdata` [Github Link](https://github.com/mir-dataset-loaders/mirdata)
 * `mir_eval` [Github Link](https://github.com/craffel/mir_eval)
-* `madmom` [Github Link](https://github.com/CPJKU/madmom)
 * `librosa` [Github Link](https://github.com/librosa/librosa)
-* `FMP notebooks` [Tempo and Beat Tracking Chapter](https://www.audiolabs-erlangen.de/resources/MIR/FMP/C6/C6.html)
-* `musicinformationretrieval.com` [Website](https://musicinformationretrieval.com)
 
 (ackmap:funding)=
 ## Funding 
-This work is funded by national funds through the FCT - Foundation for Science and 
-Technology, I.P., within the scope of the project CISUC - UID/CEC/00326/2020 and by 
-European Social Fund, through the Regional Operational Program Centro 2020 as well as by 
-Portuguese National Funds through the FCT - Foundation for Science and Technology, I.P., 
-under the project IF/01566/2015.
+This work is funded by the Google through the Award for Inclusion Research Program. The LAMIR workshop is possible due to the generous support of our sponsors: the ISMIR board, Khipux, CAPES, Google and Music.AI.
 
-![](../assets/ch6_resources/figs/centro.png)
-![](../assets/ch6_resources/figs/policromatico_v2.jpg)
-![](../assets/ch6_resources/figs/Logo2_POPH.jpg)
-
-
-Magdalena Fuentes is a faculty fellow in the NYU Provost’s Postdoctoral Fellowship Program at the NYU Center for Urban Science and Progress and Music and Audio Research Laboratory.
+![](../assets/sponsors/capes.png)
+![](../assets/sponsors/google.png)
+![](../assets/sponsors/ismir.png)
+![](../assets/sponsors/khipu.png)
+![](../assets/sponsors/musicai.png)

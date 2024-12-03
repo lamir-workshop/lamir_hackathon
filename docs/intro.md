@@ -1,22 +1,24 @@
 
-**LAMIR 2024 Hackathon**  
+**Tutorial for LAMIR 2024 Hackathon**  
 ====================================================
 
-**By Magdalena Fuentes, Giovana Morais, Richa Namballa, Xavier Juanola, Martín Rocamora**
-
-{image} assets/lamir_logo/fundos/purple.png  
+**By Magdalena Fuentes, Giovana Morais, Richa Namballa, Xavier Juanola, Lucas S. Maia, Martín Rocamora **
+```{image} assets/lamir_logo/artista+fundos/artista+fundos-03.png  
 ---  
 alt: LAMIR's Hackathon tutorial.
+width: 600px  # Specify the width in pixels or as a percentage
+
+```
 
 ---
 
 ### Welcome Message
 
-Welcome to the LAMIR 2024 Hackathon tutorial on Adapting Deep Learning Models for Latin American Music Tasks with Little Data.  
+Welcome to the LAMIR 2024 Hackathon tutorial on **Adapting Deep Learning Models for Latin American Music Tasks with Little Data**.  
 
 Latin American music presents a wealth of rhythmic diversity and complexity that is still underrepresented in Music Information Retrieval (MIR) tasks. This hackathon focuses on adapting state-of-the-art deep learning models to tackle well-known MIR tasks—specifically beat tracking and source separation—tailored to Latin American music using very little annotated data. Inspired by the work of Maia et al. ("Adapting Meter Tracking Models to Latin American Music"), this tutorial bridges cutting-edge MIR research with cultural specificity and data-efficient methods.
 
-As a prerequisite, basic experience with Python notebooks is needed. This tutorial is not an exaustive introduction to deep learning, beat tracking or source separation. Our goal is to give practitioners a headstart on these topics and its application to Latin American Music, so they can hopefully apply these ideas to other MIR tasks and Latin American music genres and instruments. If you are interested in learning more about the different topics that we touch during this tutorial, please see our references.
+As a prerequisite, basic experience with Python notebooks is required. This tutorial is not an exaustive introduction to deep learning, beat tracking or source separation. Our goal is to give practitioners a headstart on these topics and its application to Latin American Music, so they can hopefully apply these ideas to other MIR tasks and Latin American music genres and instruments. If you are interested in learning more about the different topics that we touch during this tutorial, please see our references.
 
 ---
 
@@ -45,15 +47,19 @@ Participants will gain hands-on experience in:
 
 ### How to Reference this Book  
 
-**License**  
 
 ```
-@book{tempobeatdownbeat:book,
-	Author = {Magdalena Fuentes, Giovana Morais, Richa Namballa, Xavier Juanola, Martín Rocamora},
-	Month = Nov.,
-	Publisher = {https://tempobeatdownbeat.github.io/tutorial/intro.html},
-	Title = {{Adapting Deep Learning Models for Latin American Music Tasks}},
+@book{lamir_hackathon:book,
+	Author = {Magdalena Fuentes, Giovana Morais, Richa Namballa, Xavier Juanola, Lucas S. Maia, Martín Rocamora},
+	Month = Dec.,
+	Publisher = {https://lamir-workshop.github.io/lamir_hackathon/},
+	Title = {{LAMIR HAckathon: Adapting Deep Learning Models for Latin American Music Tasks}},
 	Year = 2024,
 	Url = {https://lamir-workshop.github.io/lamir_hackathon/}
 }
 ```  
+
+### LICENSE
+
+Attribution-NonCommercial-ShareAlike 4.0 International
+
