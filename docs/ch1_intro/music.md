@@ -7,7 +7,7 @@ Samba is one of Brazil's most iconic music genres, deeply rooted in its cultural
 ##### Rhythmic Characteristics
 - **Meter**: Samba is commonly perceived in **2/4 meter**, creating a lively and syncopated rhythm.
 - **Instrumentation**: Performances feature a diverse array of percussion instruments, including the **tamborim**, **pandeiro**, **surdo**, **cuíca**, and **agogô**. Each instrument contributes distinct rhythmic patterns and timbres.
-- **Texture**: Samba's complexity lies in its rich texture, where multiple instruments, often acting as timekeepers, interweave their rhythms to produce a dense and dynamic sound.
+- **Texture**: Samba's complexity lies in its rich texture, where multiple instruments, several acting as timekeepers, interweave their rhythms to produce a dense and dynamic sound.
 - **Accents**: A defining feature of samba is the strong accent on the **second beat**, complemented by contrametric structures that create rhythmic interplay.
 
 ##### Challenges for Beat Tracking
@@ -19,15 +19,16 @@ The wide variety of instruments and rhythmic patterns in samba poses unique chal
 
 #### Candombe: The Pulse of Uruguay's African Heritage
 
-Candombe is a drumming tradition from Uruguay with deep roots in African culture. It is a cornerstone of Uruguay's popular music and an essential expression of its Afro-Atlantic heritage. Candombe performances are often vibrant and communal, taking place on the streets during parades or in traditional gatherings.
+Candombe is a drumming tradition from Uruguay with deep roots in African culture. It is a cornerstone of Uruguay's popular music and an essential expression of its Afro-Atlantic heritage. Candombe performances are often vibrant and communal, taking place on the streets during parades or traditional gatherings.
 
 ##### Rhythmic Characteristics
 - **Meter**: Candombe is structured in **4/4 meter**, providing a regular yet dynamic framework for its rhythms.
-- **Instrumentation**: The music is performed with three main types of drums:
+- **Clave Pattern**: A shared rhythmic timeline, called the **clave** or **madera**, unifies the performance across all drums.
+- **Instrumentation**: The music is performed with three main types of drums
   1. **Chico**: A high-pitched drum that acts as the timekeeper with a repetitive one-beat pattern, establishing the pulse.
   2. **Repique**: A mid-pitched drum used for improvisation, alternating between clave patterns and syncopated phrases.
   3. **Piano**: A low-pitched drum that delineates the timeline with distinct one-cycle patterns, occasionally incorporating ornamented repique-like phrases.
-- **Clave Pattern**: A shared rhythmic timeline, called the **clave** or **madera**, unifies the performance across all drums.
+
 
 ##### Challenges for Beat Tracking
 While candombe is more rhythmically homogeneous than samba, it still presents unique challenges:
