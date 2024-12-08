@@ -8,16 +8,16 @@ This book is largely inspired on the ISMIR tutorial on [`Tempo, Beat and Downbea
 (ackmap:tools)=
 ## Existing tools
 This tutorial also makes considerable use of the following
-existing tools and resources from the field of MIR in general
-and those specific to the computational analysis of musical rhythm.
+existing MIR tools.
 
 * `mirdata` [Github Link](https://github.com/mir-dataset-loaders/mirdata)
 * `mir_eval` [Github Link](https://github.com/craffel/mir_eval)
 * `librosa` [Github Link](https://github.com/librosa/librosa)
+* `madmom` [Github Link](https://github.com/CPJKU/madmom)
 
 (ackmap:funding)=
 ## Funding 
-This work is funded by the Google through the Award for Inclusion Research Program. The LAMIR workshop is possible due to the generous support of our sponsors: the ISMIR board, Khipux, CAPES, Google and MusicAI.
+This work is funded by the Google through the Award for Inclusion Research Program, and by the Coordination for the Improvement of Higher Education Personnel – Brazil (CAPES). The LAMIR workshop is possible due to the generous support of our sponsors: the ISMIR board, Khipux, CAPES, Google and MusicAI.
 
 ![](../assets/sponsors/capes.png)
 ![](../assets/sponsors/google.png)

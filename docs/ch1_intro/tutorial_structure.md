@@ -1,60 +1,21 @@
-Tutorial structure and setup
-============================
+### Tutorial Structure and Setup
 
 ```{note}
-The content in this section draws heavily from the excellent example
-from the ISMIR 2020 tutorial:
-[`Open Source Tools & Data for Music Source Separation`](https://source-separation.github.io/tutorial/landing.html)
+This section draws extensively from the ISMIR 2021 tutorial:
+[`Tempo, Beat, and Downbeat Estimation`](https://tempobeatdownbeat.github.io/tutorial/intro.html).
 ```
 
-## How to Use This Website
+## Prerequisites
 
-On the left-hand side of this web page you'll see the table of contents for the
-entire tutorial. If you don't see the contents, click the hamburger (&#9776;) icon
-to expand the left-hand column. On the right-hand side of the page you'll see 
-the table of contents for this particular page. To navigate to the next section
-you can either click on the next section on the tutorial's table of contents on 
-the left-hand side, or you can scroll to the bottom of the page to click the 
-button on the bottom right to go to the next section.
+Regarding **prerequisites**, some familiarity with running Python notebooks is recommended. However, it should also be possible to follow along by simply clicking through the examples. We've designed the tutorial to start with a light, non-technical introduction, followed by a discussion of key theoretical concepts related to deep learning approaches for rhythm analysis. The hands-on component forms the core of the tutorial.
 
+## Navigating This Website
 
-### Running Locally
-
-<!--
-```{figure} ../images/intro/run_local.gif
----
-alt: There are links to download each notebook at top right of the page.
-width: 600px
-align: center
-name: run-local
----
-There are links to download each notebook at top right of the page.
-```
--->
-
-We have included links to our [github repo](https://github.com/TempoBeatDownbeat/tutorial)
-which has `requirements.txt` to set up your own environment
-so that you can use these tools locally, if you so choose. To run the notebook
-locally, select ".ipynb" ("Download Source File") from the downloads drop down
-menu at the top right corner of the page.
-
-If you choose to run locally, here are the recommended steps:
-
-1) Clone the [github repo](https://github.com/TempoBeatDownbeat/tutorial) into a 
-   new directory.
-2) Make a new conda environment.
-    - If you want to install using `pip`, activate your environment and the
-  run `pip install -r requirements.txt`. Note that you should have `ffmpeg` installed
-  prior to installing the requirements ([instructions here](https://ffmpeg.org/download.html)).
-3) Run `jupyter lab` in your command line and navigate to the URL that it prints
-  in the console  
-  ([instructions here](https://jupyterlab.readthedocs.io/en/stable/getting_started/starting.html)).
-4) Learn!  
-
+On the left side of this page, you'll find the table of contents for the entire tutorial. If it's not visible, click the (&#9776;) icon to expand the left-hand column. On the right side, you'll see the table of contents specific to the current page. To move to the next section, you can either click on the desired section in the tutorial's table of contents on the left, or scroll to the bottom of the page and click the button in the lower right corner to proceed.
 
 ## Getting in Touch
 
-### Github
+#### GitHub
 
 <!--
 ```{figure} ../images/intro/github.gif
@@ -68,63 +29,17 @@ Links to the Github repository are on the top right of the page.
 ```
 -->
 
-There are links to the Github repository for this website and its notebooks at
-the top right corner of every page of this site. 
+Links to the GitHub repository can be found at the top right corner of every page on this site. 
 
-#### Found a bug? Typo?
+#### Spotted a Bug or Typo?
 
-Feel free to [open an issue here](https://github.com/TempoBeatDownbeat/tutorial/issues).
-This link is also at the top right corner of every page.
+If you notice any issues or errors, feel free to [open an issue here](https://github.com/lamir-workshop/lamir_hackathon/issues). A link to this GitHub repository is also available in the top right corner of each page.
 
 ```{note}
-Especially for those participating in the live tutorial, we'll
-almost surely need to iron out a few kinks in the days
-immediately after we're done. So do watch out for updates
-if something doesn't quite work as it should.
+For those attending the live tutorial, there may be a few bugs or glitches to address in the days following the event. Be sure to check for updates if something isn’t working as expected.
 ```
 
 
-## Let's get started!
+## Ready to Begin?
 
-Press the button on the bottom right to advance to the next section.
-
-# Tutorial scope and prerequisites
-
-The scope of the material presented in the tutorial can be addressed in two ways: 
-**technical** and **musical**.
-
-From the **technical perspective** our primary focus is in providing hands-on experience
-of current state of the art deep learning approaches.
-To this end, we depart from historical signal processing approaches and move quickly 
-from these into deep learning based approaches. 
-In this way, we only touch upon the broader, multi-disciplinary context of the phenonema 
-of the rhythmic and metrical structure of music and limit insights in relation to music 
-cognition, computational neuroscience, and music theory. In sum, this tutorial can be 
-primarily understood as a _data-driven_ approach to the estimation of tempo, beat, and downbeats from musical audio signals. 
-
-It is important to note that this tutorial 
-is **not** intended to be exhaustive in its coverage of all existing approaches, 
-and furthermore places greater emphasis on more recent research covering the last
-5 - 10 years. 
-
-```{tip}
-For anyone wanting a more detailed look at earlier approaches
-we highly recommend the ISMIR 2006 tutorial on [Computational Rhythm Description](https://www.eecs.qmul.ac.uk/~simond/pub/2006/ISMIR06-RhythmTutorial-GouyonDixon.pdf) conducted by not one but **two**
-former ISMIR Presidents: Fabien Gouyon and Simon Dixon.  
-```
-
-From the **musical perspective** we also restrict ourselves largely to musical content 
-from a Western perspective. This is in no way an attempt to diminish or downplay the 
-importance of non-Western musical traditions, but rather it is a reflection of the
-knowledge-base and backgrounds of the presenters. 
-
-Concerning **prerequisites** for this tutorial, some technical expertise
-in the execution of python notebooks would be beneficial, although
-it should be possible just to click through all of the examples
-without that. In addition, we rely on some basic informal understanding
-of metrical structure in music. In structuring the content of the 
-tutorial, we have strived for a fairly light-weight and non-technical
-introductory part, followed by some important theoretical constructs
-concerning deep learning approaches to rhythm analysis,
-prior to the main "hands-on" component. 
-
+Click the button in the bottom right to move to the next section.

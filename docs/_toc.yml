@@ -12,8 +12,9 @@ parts:
 
   - caption: 'Setting up a deep learning project'
     chapters:
-    - file: ch2_wandb/wandb
     - file: ch2_wandb/collab
+    - file: ch2_wandb/wandb
+    
 
   - caption: 'Beat tracking with few data'
     chapters:
