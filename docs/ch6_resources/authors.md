@@ -5,11 +5,11 @@ About the Authors
 
 <!-- <a href="https://magdalenafuentes.github.io" target="_blank">website</a> -->
 
-[**Giovana Morais**](https://steinhardt.nyu.edu/people/giovana-morais) -.
+[**Giovana Morais**](https://steinhardt.nyu.edu/people/giovana-morais) Giovana Morais is a Computer Science PhD Student working with Dr. Magdalena Fuentes. Her background includes a Bachelor's Degree in Computer Science from Universidade Federal de São Carlos (UFSCar Sorocaba) and a Master's Degree in Computer Science from Universidade de São Paulo (USP), where she conducted research on self-supervised tempo estimation methods. In addition to her academic pursuits, she worked in the industry as a Data Scientist with a focus on recommendation systems at Gympass, and as a Machine Learning Engineer for audio systems at Stattus4, both Brazilian startups. Giovana's research interests revolve around Music Information Retrieval and Machine Listening, with a particular interest in exploring applications within Latin music genres.
 
 <!-- <a href="https://mepdavies.github.io" target="_blank">website</a> -->
 
-[**Richa Namballa**](https://richa-namballa.github.io) -.
+[**Richa Namballa**](https://richa-namballa.github.io) Richa Namballa (she/her) is a PhD student at NYU's Music and Audio Research Laboratory (MARL) under Dr. Magdalena Fuentes, focusing on source separation and representing diverse music traditions in MIR. She earned an M.M. in Music Technology from NYU, completing her thesis with Dr. Brian McFee, and previously worked in Dr. Pablo Ripollés's lab on physiological markers of musical reward. Before graduate studies, Richa earned a B.A. in Statistics and a B.S. in Business Administration from UC Berkeley and worked as a senior data scientist in Silicon Valley, filing two patent applications. She served as President of NYU's Society of Women in Technology (SWiTCH) and is active on the Audio Engineering Society’s DEI Committee. Outside of academia, Richa enjoys live music, plays tenor trombone, works as a live audio engineer, and fosters shelter animals.
 
 <!-- <a href="https://mepdavies.github.io" target="_blank">website</a> -->
 

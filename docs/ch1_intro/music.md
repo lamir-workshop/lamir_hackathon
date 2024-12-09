@@ -56,12 +56,3 @@ Both samba and candombe share characteristics that make them suitable for low-da
 2. **Cultural Significance**: These traditions are vital to their respective cultural identities, making them important targets for specialized music analysis tools.
 3. **Potential for Adaptation**: The repetitive and well-structured rhythmic elements in these genres allow models to adapt effectively with minimal annotated data.
 
----
-
-#### Examples and Visualizations
-
-**[Placeholder for pictures and audio examples]**
-- Include spectrograms illustrating samba's dense texture and candombe's clave-driven structure.
-- Provide audio clips of typical samba and candombe rhythms to demonstrate their unique qualities. 
-
-This section contextualizes the beat tracking methodology within the rich cultural and rhythmic landscapes of samba and candombe, paving the way for effective adaptation of MIR techniques to these traditions.

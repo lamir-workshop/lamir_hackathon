@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Takeaways &#8212; LAMIR Hackathon</title>
+    <title>Some code to get you started &#8212; LAMIR Hackathon</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hands on!" href="../ch4_source_separation/source_separation_with_few_data.html" />
-    <link rel="prev" title="Beat tracking with little data" href="definition.html" />
+    <link rel="next" title="Concluding remarks" href="../ch5_discussion/open_challenges.html" />
+    <link rel="prev" title="Weights and Biases" href="../ch2_wandb/wandb.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -101,7 +101,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ch1_intro/tutorial_structure.html">
-   Tutorial structure and setup
+   Tutorial Structure and Setup
   </a>
  </li>
  <li class="toctree-l1">
@@ -117,47 +117,30 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Setting up a deep learning project
+  Tutorial materials
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ch2_wandb/collab.html">
+   Collab and Python Lightening
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ch2_wandb/wandb.html">
    Weights and Biases
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ch2_wandb/collab.html">
-   Collab
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Beat tracking with few data
+  Hands on
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="definition.html">
-   Beat tracking with little data
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Takeaways
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Source separation with few data and artificial mixtures
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../ch4_source_separation/source_separation_with_few_data.html">
-   Hands on!
+   Some code to get you started
   </a>
  </li>
 </ul>
@@ -276,36 +259,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#results">
-   Results
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#performance">
-     Performance
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computational-cost">
-     Computational Cost
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#key-takeaways">
-   Key Takeaways
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -314,52 +267,10 @@
         
               <div>
                 
-  <div class="section" id="takeaways">
-<h1>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">¶</a></h1>
-<hr class="docutils" />
-<div class="section" id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="performance">
-<h3>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p><strong>Minimal Data Requirements</strong>:</p>
-<ul class="simple">
-<li><p>Models fine-tuned with as little as 1.5 minutes of annotated data achieved F-measure scores exceeding 80% for beat tracking in both samba and candombe.</p></li>
-<li><p>Downbeat tracking performance showed similar trends, although samba required slightly more data to achieve comparable results due to its greater timbral and rhythmic complexity.</p></li>
-</ul>
-</li>
-<li><p><strong>Data Augmentation</strong>:</p>
-<ul class="simple">
-<li><p>Applying simple augmentation strategies, such as varying the input’s tempo, significantly improved model performance, especially for downbeat tracking in samba.</p></li>
-</ul>
-</li>
-<li><p><strong>Comparative Analysis</strong>:</p>
-<ul class="simple">
-<li><p>Fine-tuned models with data augmentation (TCN-FTA) consistently outperformed models trained from scratch (TCN-FS) and statistical baselines like BayesBeat.</p></li>
-<li><p>Off-the-shelf models trained on Western datasets performed poorly, highlighting the importance of cultural specificity in model adaptation.</p></li>
-</ul>
-</li>
-</ol>
-</div>
-<div class="section" id="computational-cost">
-<h3>Computational Cost<a class="headerlink" href="#computational-cost" title="Permalink to this headline">¶</a></h3>
-<p>Training the fine-tuned model required minimal computational resources:</p>
-<ul class="simple">
-<li><p>Models trained with data augmentation on a standard CPU achieved near-full-dataset performance in under two minutes for the smallest dataset sizes.</p></li>
-<li><p>Bayesian models trained even faster, making them a competitive alternative when computational constraints are a priority.</p></li>
-</ul>
-<hr class="docutils" />
-</div>
-</div>
-<div class="section" id="key-takeaways">
-<h2>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>Feasibility</strong>: Low-data adaptation is viable for rhythmically homogeneous genres like samba and candombe, offering near-optimal performance with modest annotation efforts.</p></li>
-<li><p><strong>Optimal Strategy</strong>: Fine-tuning pretrained models with data augmentation is the most effective approach, balancing performance and resource efficiency.</p></li>
-<li><p><strong>Implications</strong>: This method opens the door to adapting beat tracking models for other underrepresented music traditions, reducing the barrier to entry for culturally diverse MIR applications.</p></li>
-</ul>
-<p>This exploration highlights the potential of data-efficient methods to expand the reach of MIR tools while respecting the uniqueness of diverse musical cultures.</p>
-</div>
+  <div class="section" id="some-code-to-get-you-started">
+<h1>Some code to get you started<a class="headerlink" href="#some-code-to-get-you-started" title="Permalink to this headline">¶</a></h1>
+<p>The following Colab provides code for you to play with the ideas of fine tuning a beat tracking model with few examples. Go check it out!</p>
+<p><a class="reference external" href="https://drive.google.com/file/d/11SOfTYt_gw2L4KrHMXTocVBaSJGCP1Vb/view?usp=sharing"><img alt="Open In Collab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -392,19 +303,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="definition.html" title="previous page">
+        <a class="left-prev" href="../ch2_wandb/wandb.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Beat tracking with little data</p>
+                <p class="prevnext-title">Weights and Biases</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../ch4_source_separation/source_separation_with_few_data.html" title="next page">
+        <a class="right-next" href="../ch5_discussion/open_challenges.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Hands on!</p>
+                <p class="prevnext-title">Concluding remarks</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

@@ -10,20 +10,14 @@ parts:
     - file: ch1_intro/few_data
     - file: ch1_intro/music
 
-  - caption: 'Setting up a deep learning project'
+  - caption: 'Tutorial materials'
     chapters:
     - file: ch2_wandb/collab
     - file: ch2_wandb/wandb
-    
 
-  - caption: 'Beat tracking with few data'
+  - caption: 'Hands on'
     chapters:
-    - file: ch3_beat_tracking/definition
     - file: ch3_beat_tracking/beat_tracking_with_few_data
-
-  - caption: 'Source separation with few data and artificial mixtures'
-    chapters:
-    - file: ch4_source_separation/source_separation_with_few_data
 
   - caption: 'Discussion and conclusions'
     chapters:
