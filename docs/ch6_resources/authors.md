@@ -5,11 +5,11 @@ About the Authors
 
 <!-- <a href="https://magdalenafuentes.github.io" target="_blank">website</a> -->
 
-[**Giovana Morais**](https://steinhardt.nyu.edu/people/giovana-morais) is a Computer Science PhD Student working with Dr. Magdalena Fuentes. Her background includes a Bachelor's Degree in Computer Science from Universidade Federal de São Carlos (UFSCar Sorocaba) and a Master's Degree in Computer Science from Universidade de São Paulo (USP), where she conducted research on self-supervised tempo estimation methods.
+[**Giovana Morais**](https://steinhardt.nyu.edu/people/giovana-morais) is a PhD student in the Computer Science program working with Dr. Magdalena Fuentes at the New York University (NYU) Tandon School of Engineering. She also holds a Bachelor's degree in Computer Science from Universidade Federal de São Carlos (UFSCar Sorocaba) and a Master's Degree in Computer Science from Universidade de São Paulo (USP), where she developed self-supervised tempo estimation methods. Giovana's current research interests include beat-tracking and multimodal representation learning.
 
 <!-- <a href="https://mepdavies.github.io" target="_blank">website</a> -->
 
-[**Richa Namballa**](https://richa-namballa.github.io) (she/her/hers) is a PhD student at NYU's Music and Audio Research Laboratory (MARL) under the supervision of Dr. Magdalena Fuentes. Her primary research areas are source separation and the representation of diverse music traditions in music information research. Richa also received her M.M. in Music Technology from NYU where she completed her Master's thesis under the advisement of Dr. Brian McFee. Concurrently, she served as a research assistant in Dr. Pablo Ripollés's cognitive neuroscience laboratory studying physiological markers of musical reward.
+[**Richa Namballa**](https://richa-namballa.github.io) is a PhD student in the Music Technology program at New York University (NYU) under the supervision of Dr. Magdalena Fuentes. Her primary research areas are source separation and the representation of diverse music traditions in music information research. Richa also received her M.M. in Music Technology from NYU where she completed her thesis under the advisement of Dr. Brian McFee. Prior to pursuing her graduate studies, she worked as a senior data scientist in industry, resulting in two patents on proprietary technology she developed. Richa also holds a B.A. in Statistics and a B.S. in Business Administration from the University of California, Berkeley.
 
 <!-- <a href="https://mepdavies.github.io" target="_blank">website</a> -->
 
