@@ -2,7 +2,7 @@
 **Tutorial for LAMIR 2024 Hackathon**  
 ====================================================
 
-**By Magdalena Fuentes, Giovana Morais, Richa Namballa, Xavier Juanola and Martín Rocamora**
+**By Giovana Morais, Richa Namballa, Xavier Juanola, Martín Rocamora and Magdalena Fuentes**
 ```{image} assets/lamir_logo/artista+fundos/artista+fundos-03.png  
 ---  
 alt: LAMIR's Hackathon tutorial.
@@ -49,7 +49,7 @@ Specifically, participants will gain hands-on experience in:
 
 ```
 @book{lamir_hackathon:book,
-	Author = {Magdalena Fuentes, Giovana Morais, Richa Namballa, Xavier Juanola, Martín Rocamora},
+	Author = {Giovana Morais, Richa Namballa, Xavier Juanola, Martín Rocamora, Magdalena Fuentes},
 	Month = Dec.,
 	Publisher = {https://lamir-workshop.github.io/lamir_hackathon/},
 	Title = {{LAMIR HAckathon: Adapting Deep Learning Models for Latin American Music Tasks}},
