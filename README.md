@@ -2,10 +2,9 @@
 
 Resources and Jupyter Book for the LAMIR's 2025 Hackathon.
 
-To jump directly to the hands on part:
-[![Open In Collab]()
+To jump directly to the book:
+[[![Open In Collab]()](https://lamir-workshop.github.io/lamir_hackathon/intro.html)
 
-To go directly to the book:
 
 
 
