@@ -59,13 +59,13 @@ Let's say we have a simple PyTorch project for training a neural network on the 
            super(Net, self).__init__()
            self.fc1 = nn.Linear(28 * 28, 128)
            self.fc2 = nn.Linear(128, 10)
-       
+
        def forward(self, x):
            x = x.view(-1, 28 * 28)
            x = torch.relu(self.fc1(x))
            x = self.fc2(x)
            return x
-   
+
    model = Net()
    optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
    criterion = nn.CrossEntropyLoss()
@@ -83,13 +83,13 @@ Let's say we have a simple PyTorch project for training a neural network on the 
            loss = criterion(output, target)
            loss.backward()
            optimizer.step()
-           
+
            # Log metrics to W&B
            wandb.log({"loss": loss.item(), "epoch": epoch})
-           
+
            if batch_idx % 100 == 0:
                print(f'Train Epoch: {epoch} [{batch_idx * len(data)}/{len(train_loader.dataset)}]	Loss: {loss.item():.6f}')
-   
+
    # Run the training
    wandb.watch(model, log="all")
    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -117,7 +117,7 @@ PyTorch Lightning is a high-level framework for PyTorch that abstracts away much
 ### 1. Install PyTorch Lightning and W&B
 
 ```bash
-pip install lightning 
+pip install lightning
 pip install wandb
 ```
 
@@ -143,20 +143,20 @@ pip install wandb
            super(LitModel, self).__init__()
            self.fc1 = torch.nn.Linear(28 * 28, 128)
            self.fc2 = torch.nn.Linear(128, 10)
-       
+
        def forward(self, x):
            x = x.view(-1, 28 * 28)
            x = F.relu(self.fc1(x))
            x = self.fc2(x)
            return x
-       
+
        def training_step(self, batch, batch_idx):
            x, y = batch
            y_hat = self(x)
            loss = F.cross_entropy(y_hat, y)
            self.log('train_loss', loss)
            return loss
-       
+
        def configure_optimizers(self):
            return torch.optim.SGD(self.parameters(), lr=0.01, momentum=0.9)
    ```
@@ -188,19 +188,19 @@ pip install wandb
 
         ```python
         from lightning.pytorch.callbacks import ModelCheckpoint
-        
+
         checkpoint_callback = ModelCheckpoint(
-            dirpath='checkpoints/', 
+            dirpath='checkpoints/',
             filename='model-{epoch:02d}-{val_loss:.2f}',
-            monitor='val_loss', 
-            save_top_k=1, 
+            monitor='val_loss',
+            save_top_k=1,
             mode='min'
         )
         ```
         Then, pass the callback to the trainer.
 
 ```{tip}
-Avoid storing your model checkpoints into Weights & Biases since you only have 100Gb of free space. By logging the entire model checkpoints, you can quickly exhaust your storage quota. Instead, consider logging only essential metrics, model summaries, or lightweight artifacts to avoid filling up the available space.
-```  
+Avoid storing your model checkpoints into Weights & Biases since you only have 100GB of free space. By logging the entire model checkpoints, you can quickly exhaust your storage quota. Instead, consider logging only essential metrics, model summaries, or lightweight artifacts to avoid filling up the available space.
+```
 
 The PyTorch Lightning integration with W&B allows for even more automation. Metrics will automatically be logged, and the training process will be visualized in the W&B dashboard.

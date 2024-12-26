@@ -1,6 +1,6 @@
-# Collab and Python Lightening
+# Colab and Python Lightning
 
-We will use Google Colab and PyTorch Lightening given their 
+We will use Google Colab and PyTorch Lightning.
 
 ## **1. Google Colab**
 Google Colab is a free cloud-based platform that lets you write and execute Python code in a Jupyter Notebook environment. It's perfect for collaborative coding, and you get access to free GPUs and TPUs for training models.
@@ -18,7 +18,7 @@ Google Colab is a free cloud-based platform that lets you write and execute Pyth
 ---
 
 ## **2. Python Lightning**
-Python Lightning (or PyTorch Lightning) is a high-level framework for PyTorch that simplifies building and scaling machine learning models. It abstracts the boilerplate code and provides a structure for reproducible and scalable experiments.
+PyTorch Lightning (or Python Lightning) is a high-level framework for PyTorch that simplifies building and scaling machine learning models. It abstracts the boilerplate code and provides a structure for reproducible and scalable experiments.
 
 ### **Key Features**
 - **Modularity:** Separate data loading, model definition, and training loops.
@@ -30,3 +30,9 @@ Python Lightning (or PyTorch Lightning) is a high-level framework for PyTorch th
 1. Install Lightning:
    ```bash
    pip install lightning
+   ```
+
+
+### **Useful Links**
+- [Lightning Documentation](https://lightning.ai/docs/pytorch/stable/)
+- [Lightning in 15 Minutes](https://lightning.ai/docs/pytorch/stable/starter/introduction.html)
