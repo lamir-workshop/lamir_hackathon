@@ -52,7 +52,7 @@ Specifically, participants will gain hands-on experience in:
   author = {Morais, Giovana and Namballa, Richa and Juanola, Xavier and Rocamora, Martín and Fuentes, Magdalena},
   month = dec,
   publisher = {https://lamir-workshop.github.io/lamir_hackathon/},
-  title = {LAMIR Hackathon: Adapting Deep Learning Models for Latin American Music Tasks},
+  title = {{LAMIR Hackathon: Adapting Deep Learning Models for Latin American Music Tasks}},
   year = {2024},
   url = {https://lamir-workshop.github.io/lamir_hackathon/}
 }
